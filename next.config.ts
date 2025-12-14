@@ -14,6 +14,11 @@ const nextConfig: NextConfig = {
         source: "/uploads/:path*",
         destination: `${process.env.SERVER_URL}/uploads/:path*`,
       },
+      // Добавьте это:
+      {
+        source: "/api/:path*",
+        destination: `${process.env.SERVER_URL}/api/:path*`,
+      },
     ];
   },
 };
