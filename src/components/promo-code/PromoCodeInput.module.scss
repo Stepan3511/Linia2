@@ -1,0 +1,69 @@
+.promo_wrapper {
+  @apply mt-4 flex flex-col gap-2 mb-2;
+}
+
+.toggle_promo {
+  @apply text-sm text-blue-600 hover:underline transition-all;
+}
+
+.promo_input_block {
+  @apply flex gap-2;
+}
+
+.promo_input {
+  @apply w-[50%] px-2 py-1 rounded-md border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500;
+  &:disabled {
+    @apply bg-gray-100 text-gray-400 cursor-not-allowed border-gray-200;
+  }
+}
+
+.promo_apply_button {
+  @apply w-[50%] cursor-pointer border border-main bg-main text-black px-2 py-1 rounded-md text-sm hover:bg-main_hover hover:border-main hover:bg-white transition-all duration-200 p-2;
+  &:disabled {
+    @apply bg-gray-300 text-gray-500 cursor-not-allowed;
+  }
+}
+
+.promo_success {
+  @apply flex items-center gap-2 text-sm text-green-600 font-medium;
+}
+
+.promo_image {
+  @apply w-10 h-10 object-cover rounded;
+}
+
+.promo_error {
+  @apply text-sm text-red-500 font-medium;
+}
+
+.giftBlock {
+  @apply mt-4;
+}
+
+.giftLabel {
+  @apply font-bold text-green-700;
+}
+
+.giftList {
+  @apply flex flex-wrap gap-4 mt-2;
+}
+
+.giftItem {
+  @apply flex items-center gap-2 bg-gray-100 p-2 rounded-lg;
+}
+
+.giftImage {
+  @apply w-10 h-10 rounded object-cover;
+}
+
+.promo_success_header {
+  @apply relative flex items-center gap-2 bg-green-100 rounded p-2 mt-3;
+}
+
+.promo_image {
+  @apply w-8 h-8 rounded object-cover;
+}
+
+.remove_button {
+  @apply absolute top-1 right-1 text-gray-500 hover:text-red-500 transition;
+}

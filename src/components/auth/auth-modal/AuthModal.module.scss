@@ -1,0 +1,43 @@
+.modal_overlay {
+  @apply fixed inset-0 bg-black/60 flex justify-center items-center z-[9999];
+}
+
+.modal_content {
+  @apply bg-white p-8 rounded-2xl max-w-[420px] w-full shadow-lg text-center relative m-2;
+}
+
+.modal_close {
+  @apply absolute top-2 right-2;
+}
+
+.modal_title {
+  @apply text-[20px] font-semibold mb-3;
+}
+
+.modal_subtitle {
+  @apply text-[16px] text-[#555] mb-4;
+}
+
+.benefits_list {
+  @apply list-none p-0 mb-6 text-left;
+}
+
+.benefits_list li {
+  @apply flex items-center mb-2.5 text-[15px] text-[#333];
+}
+
+.icon {
+  @apply w-[18px] h-[18px] mr-2 text-green-600;
+}
+
+.button_group {
+  @apply flex justify-center gap-3;
+}
+
+.login_button {
+  @apply bg-black text-white py-2.5 px-6 rounded-lg cursor-pointer border-0 font-medium transition-all duration-300;
+}
+
+.login_button:hover {
+  @apply bg-[#222];
+}

@@ -1,0 +1,39 @@
+.topbar_wrapper {
+  @apply sticky top-0 bg-white shadow-lg shadow-black/5 z-10 backdrop-blur-lg bg-opacity-80 flex w-full h-[50px] items-center;
+}
+
+.container {
+  @apply max-w-[1280px] mx-auto px-[10px] py-[5px] w-full relative;
+}
+
+.topbar {
+  @apply flex justify-between;
+}
+
+.menu {
+  @apply flex items-center gap-5 p-1 rounded-2xl overflow-x-scroll;
+}
+
+.menu_item {
+  @apply m-0 flex-shrink-0;
+}
+
+.menu_link {
+  @apply text-sm text-black font-bold transition-all py-1 duration-200 border-b-2 border-transparent;
+}
+
+.menu_link:hover {
+  @apply border-main;
+}
+
+.cart_wrapper {
+  @apply absolute right-[10px] bottom-[-15px] flex items-center gap-5 font-bold text-sm;
+}
+
+.menu_button {
+  @apply text-black transition-all duration-200 border-b-2 border-transparent;
+}
+
+.active {
+  @apply text-orange-600 font-bold border-b-[2px] border-orange-600;
+}

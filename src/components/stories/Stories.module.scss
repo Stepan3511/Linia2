@@ -1,0 +1,75 @@
+.stories_wrapper {
+  @apply max-w-[1280px] w-full mx-auto px-[10px] pt-[10px];
+}
+
+.loading,
+.error {
+  @apply text-center text-lg text-gray-500;
+}
+
+.slider_container {
+  @apply relative;
+}
+
+.slide {
+  @apply w-[150px] cursor-pointer;
+}
+
+.story_wrapper {
+  @apply text-center cursor-pointer;
+}
+
+.image_wrapper {
+  @apply h-[250px] overflow-hidden rounded-[10px] mb-[10px] flex justify-center items-center;
+}
+
+.image {
+  @apply w-full h-full object-cover transition-transform duration-300 ease-in-out;
+
+  &:hover {
+    @apply scale-105;
+  }
+}
+
+.story_title {
+  @apply text-sm font-bold text-primary;
+}
+
+/* Модальное окно */
+.modal {
+  @apply fixed top-0 left-0 w-screen h-screen bg-black/80 flex justify-center items-center z-[1000];
+}
+
+.close_button {
+  @apply absolute top-[20px] right-[20px] text-black px-[10px] py-[15px] rounded-md cursor-pointer text-base;
+}
+
+/* Кастомные кнопки */
+.navigation_buttons {
+  @apply flex justify-center gap-4 mt-[10px];
+}
+
+.prev_button,
+.next_button {
+  @apply bg-[#e5d7be] text-black border-none p-[5px] rounded-md text-sm cursor-pointer transition-colors duration-300 ease-in-out sm:p-[10px];
+
+  &:hover {
+    @apply bg-[#e5d7be]/80;
+  }
+}
+
+.stories_container {
+  @apply relative object-cover max-h-[90%] max-w-[90%] rounded-lg overflow-hidden;
+}
+
+.stories_container img {
+  @apply w-full h-full object-cover;
+}
+
+.close_button_icon {
+  @apply absolute top-0 right-0 w-8 h-8 text-white/50;
+}
+
+.group_title {
+  @apply text-sm font-bold text-primary text-center;
+}

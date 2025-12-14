@@ -1,0 +1,11 @@
+.wrapper {
+  @apply flex flex-col min-h-screen;
+}
+
+.main {
+  @apply flex-grow;
+}
+
+.loading {
+  @apply text-center mt-10;
+}

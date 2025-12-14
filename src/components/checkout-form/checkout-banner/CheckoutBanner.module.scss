@@ -1,0 +1,15 @@
+.banner_container {
+  @apply w-full my-4 overflow-hidden;
+}
+
+.banner_image {
+  @apply relative w-full h-[300px];
+}
+
+.image {
+  @apply object-contain;
+}
+
+.banner_link {
+  @apply block w-full cursor-pointer transition-transform hover:scale-[1.02];
+}

@@ -1,0 +1,75 @@
+.wrapper {
+  @apply flex flex-col min-h-screen;
+}
+
+.container {
+  @apply max-w-[1280px] w-full mx-auto p-[10px];
+}
+
+.error {
+  @apply text-center text-black font-medium mt-4;
+}
+
+.content {
+  @apply w-full flex flex-col items-start;
+}
+
+.title {
+  @apply text-2xl font-bold mb-2;
+}
+
+.email {
+  @apply mb-6;
+}
+
+.ordersTitle {
+  @apply text-xl font-semibold mb-3 mt-4;
+}
+
+.ordersList {
+  @apply space-y-6 w-full;
+}
+
+.orderItem {
+  @apply border border-gray-300 rounded-lg p-4 bg-white;
+}
+
+.orderHeader {
+  @apply flex justify-between items-center mb-2;
+}
+
+.date {
+  @apply text-sm text-gray-500;
+}
+
+.products {
+  @apply list-disc pl-4 space-y-1;
+}
+
+.product {
+  @apply text-sm;
+}
+
+.logoutButton {
+  @apply mt-6 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 disabled:opacity-50 transition-all;
+}
+
+.giftBlock {
+  @apply mt-4;
+}
+
+.giftLabel {
+  @apply font-bold text-green-700;
+}
+
+.giftList {
+  @apply flex flex-wrap gap-4 mt-2;
+}
+
+.giftItem {
+  @apply flex items-center gap-2 bg-gray-100 p-2 rounded-lg;
+}
+
+.giftImage {
+  @apply w-10 h-10 rounded object-cover;
+}

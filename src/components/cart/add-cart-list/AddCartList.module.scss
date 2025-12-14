@@ -1,0 +1,63 @@
+.add_card_container {
+  @apply mx-auto max-w-[73%];
+}
+
+.products {
+  @apply flex flex-col pt-0 sm:pt-6;
+}
+
+.product_card {
+  @apply flex flex-col items-center justify-between border rounded-lg border-main overflow-hidden;
+}
+
+.product_card_wrapper {
+  @apply flex flex-col items-center w-[100%];
+}
+
+.product_image {
+  @apply flex-shrink-0 object-cover h-[60px] w-[100%] sm:w-[100%] sm:h-[100px];
+}
+
+.product_name {
+  @apply font-bold text-center p-1 pb-0 leading-tight text-xs block;
+}
+
+.product_description {
+  @apply italic text-[#ea580c] block font-medium leading-tight text-xs sm:text-base;
+}
+
+.product_bottom {
+  @apply flex flex-col flex-shrink-0 gap-1 items-center text-sm justify-between;
+}
+
+.product_bottom_wrapper {
+  @apply flex flex-col p-1 pt-0 flex-shrink-0 items-center sm:p-2;
+}
+
+.product_weight_price {
+  @apply flex  items-end sm:flex-row gap-1 sm:gap-2;
+}
+
+.no_products {
+  @apply italic text-gray-500;
+}
+
+.quantity_button_icon {
+  @apply w-[15px] h-[15px] sm:w-[20px] sm:h-[20px];
+}
+
+.quantity_button {
+  @apply font-medium p-1 h-[25px] w-[25px] bg-main border border-white flex items-center justify-center text-black hover:border-main hover:bg-white rounded-full transition-all duration-200;
+}
+
+.quantity_controls {
+  @apply flex items-center gap-1;
+}
+
+.quantity {
+  @apply text-center font-bold w-5 sm:w-6;
+}
+
+.min_order_warning {
+  @apply text-[10px] text-red-500 italic mt-2 sm:text-sm;
+}

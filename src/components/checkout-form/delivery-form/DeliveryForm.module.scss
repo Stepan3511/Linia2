@@ -1,0 +1,44 @@
+.form {
+  @apply bg-white p-[10px] rounded-lg shadow-lg space-y-4 mt-[20px] sm:p-[20px];
+}
+
+.input_group {
+  @apply mb-4;
+}
+
+.label {
+  @apply block text-sm font-medium mb-1 text-gray-700;
+}
+
+.input {
+  @apply w-full border rounded-lg px-3 py-2 text-gray-800 bg-white;
+  margin-top: 8px !important;
+
+  &:disabled {
+    @apply bg-gray-100 text-gray-500 border-gray-300 cursor-not-allowed;
+  }
+}
+
+.error {
+  @apply text-red-500 text-sm mt-1;
+}
+
+.toggle_group {
+  @apply flex flex-col gap-2 mb-2 sm:flex-row;
+}
+
+.toggle_button {
+  @apply py-2 px-4 rounded-lg bg-gray-200 text-gray-700 transition hover:bg-gray-300;
+}
+
+.toggle_button.active {
+  @apply rounded-lg bg-main transition hover:bg-main_hover text-center;
+}
+
+.date_time_wrapper {
+  margin-top: 15px;
+}
+
+.date_time_error_wrapper {
+  @apply flex flex-col gap-2;
+}

@@ -1,0 +1,49 @@
+.container {
+  @apply max-w-[1280px] mx-auto p-[10px];
+}
+
+.wrapper {
+  @apply flex flex-col justify-center items-center pt-5;
+}
+
+.list {
+  @apply grid grid-cols-1  gap-1 pt-6 max-w-[600px];
+}
+
+.item {
+  @apply border w-full p-2 m-1 flex gap-2 justify-between items-center;
+}
+.item_wrapper {
+  @apply flex flex-col gap-1;
+}
+
+.button {
+  @apply text-sm font-light px-2 py-1 rounded-md bg-main transition hover:bg-white border border-main text-center;
+}
+
+.buttons {
+  @apply flex flex-col gap-2;
+}
+
+.title {
+  @apply text-2xl text-center pb-8;
+}
+
+.form {
+  @apply flex flex-col gap-2 justify-center items-center w-full max-w-[400px];
+}
+.form_field {
+  @apply w-full text-sm font-light border border-main p-2 rounded-md;
+}
+
+.form_button {
+  @apply text-sm w-full font-light p-2 rounded-md bg-main transition hover:bg-white border border-main text-center;
+}
+
+.breadcrum_list {
+  @apply text-sm list-none flex flex-wrap gap-2 sm:text-base;
+}
+
+.breadcrum_link {
+  @apply flex-shrink-0;
+}

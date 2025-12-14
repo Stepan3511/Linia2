@@ -1,0 +1,134 @@
+.container {
+  @apply max-w-[1280px] mx-auto p-[10px];
+}
+
+.wrapper {
+  @apply flex flex-col justify-center items-center pt-5;
+}
+
+.list {
+  @apply grid grid-cols-1  gap-1 pt-6 sm:grid-cols-2;
+}
+
+.item {
+  @apply border w-full p-2 m-1 flex gap-1 justify-between items-center;
+}
+.item_wrapper {
+  @apply flex flex-col gap-1;
+}
+
+.button {
+  @apply text-sm font-light px-2 py-1 rounded-md bg-main transition hover:bg-white border border-main text-center;
+}
+
+.buttons {
+  @apply flex flex-col gap-2;
+}
+
+.title {
+  @apply text-2xl text-center pb-8;
+}
+
+.form {
+  @apply flex flex-col gap-4 justify-center items-center w-full max-w-[600px];
+}
+
+.form_field {
+  @apply w-full text-sm font-light border border-main p-2 rounded-md;
+}
+
+.form_button {
+  @apply text-sm w-full font-light p-2 rounded-md bg-main transition hover:bg-white border border-main text-center mt-4;
+}
+
+.breadcrum_list {
+  @apply text-sm list-none flex flex-wrap gap-2 sm:text-base;
+}
+
+.breadcrum_link {
+  @apply flex-shrink-0;
+}
+
+.banner_info {
+  @apply flex flex-col gap-4 mt-6 text-center;
+}
+
+.banner_content {
+  @apply flex flex-col gap-6 mt-6 w-full max-w-[800px];
+}
+
+.banner_preview {
+  @apply w-full mt-4;
+}
+
+.breadcrum_arrow {
+  @apply flex-shrink-0;
+}
+
+.checkbox_container {
+  @apply flex items-center gap-2 w-full mt-2;
+}
+
+.checkbox {
+  @apply h-5 w-5 cursor-pointer;
+}
+
+.checkbox_label {
+  @apply font-medium;
+}
+
+.image_preview_container {
+  @apply w-full flex justify-center;
+}
+
+.image_preview {
+  @apply relative w-full h-[200px] border border-gray-300 rounded-md overflow-hidden;
+}
+
+.preview_image {
+  @apply object-cover;
+}
+
+.no_image {
+  @apply w-full h-full flex items-center justify-center bg-gray-100 text-gray-500;
+}
+
+.image_upload_section {
+  @apply w-full mb-4;
+}
+
+.image_upload_container {
+  @apply flex flex-col gap-4 w-full;
+}
+
+.upload_controls {
+  @apply flex flex-wrap gap-2 mt-2;
+}
+
+.file_input {
+  @apply hidden;
+}
+
+.upload_button {
+  @apply px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition;
+}
+
+.clear_button {
+  @apply px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition;
+}
+
+.form_section {
+  @apply w-full;
+}
+
+.form_label {
+  @apply block mb-2 font-medium;
+}
+
+.error_message {
+  @apply text-red-500 text-sm mt-1;
+}
+
+.field_hint {
+  @apply text-gray-500 text-sm mt-1;
+}

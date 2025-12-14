@@ -1,0 +1,11 @@
+.container {
+  @apply max-w-[1280px] mx-auto px-[10px] pt-[10px];
+}
+
+.header_wrapper {
+  @apply flex flex-col items-center sm:flex-row justify-between;
+}
+
+.image_wrapper {
+  @apply flex items-center gap-4;
+}

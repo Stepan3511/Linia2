@@ -1,0 +1,94 @@
+.container {
+  @apply max-w-[1280px] mx-auto p-[10px];
+}
+
+.group {
+  @apply mb-8 scroll-mt-[65px];
+}
+
+.group_title {
+  @apply text-2xl mb-4;
+}
+
+.products {
+  @apply grid xl:grid-cols-4 xl:gap-[40px] lg:grid-cols-3 lg:gap-[30px] md:grid-cols-2 md:gap-[20px] grid-cols-2 gap-[20px];
+}
+
+.product_card {
+  @apply flex flex-col justify-between w-full h-full;
+}
+
+.product_img_rounded {
+  @apply rounded-lg;
+}
+
+.product_img_wrapper {
+  @apply flex justify-center rounded-lg h-[200px] overflow-hidden sm:h-[260px];
+}
+
+.product_image {
+  @apply w-full h-full rounded-lg object-cover duration-300 ease-in-out hover:scale-105;
+}
+
+.product_button:hover ~ .product_img_wrapper .product_image {
+  transform: scale(1.05);
+}
+
+.product_name {
+  @apply mb-1 mt-3 font-bold leading-tight md:text-[20px] block;
+}
+
+.product_description {
+  @apply text-sm text-[#5c6370] block;
+}
+
+.product_weight_pieces {
+  @apply flex gap-1 pt-1;
+}
+.product_pieces {
+  @apply text-sm text-[#5c6370] block;
+  span {
+    @apply text-black;
+  }
+}
+.product_weight {
+  @apply text-sm text-[#5c6370] block;
+  span {
+    @apply text-black;
+  }
+}
+
+.product_bottom {
+  @apply flex justify-between items-center mt-4;
+}
+
+.product_button {
+  @apply font-normal text-sm py-1 px-2 bg-main border border-white flex items-center text-black hover:border-main hover:bg-white rounded-2xl transition-all duration-200 sm:font-medium sm:text-base;
+}
+.product_button_icon {
+  @apply mr-1 w-[15px] h-[15px] sm:w-[20px] sm:h-[20px];
+}
+
+.product_price {
+  @apply text-blue-600 font-bold;
+}
+
+.no_products {
+  @apply italic text-gray-500;
+}
+
+.quantity_button_icon {
+  @apply w-[15px] h-[15px] sm:w-[20px] sm:h-[20px];
+}
+
+.quantity_button {
+  @apply font-medium p-1 h-[30px] w-[30px] bg-main border border-white flex items-center justify-center text-black hover:border-main hover:bg-white rounded-full transition-all duration-200 sm:h-[34px] sm:w-[34px];
+}
+
+.quantity_controls {
+  @apply flex items-center gap-1 sm:gap-2;
+}
+
+.quantity {
+  @apply text-center font-bold w-6;
+}

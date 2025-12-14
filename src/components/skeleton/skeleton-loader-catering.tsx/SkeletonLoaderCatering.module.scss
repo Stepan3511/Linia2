@@ -1,0 +1,55 @@
+.column {
+  @apply flex flex-col gap-1;
+}
+
+.cardCatering {
+  @apply animate-pulse flex justify-between items-center border p-1 sm:p-2 gap-2 sm:gap-4;
+}
+
+.leftBlock {
+  @apply flex items-center gap-2 sm:gap-4 w-[70%];
+}
+
+.imageSmall {
+  @apply flex-shrink-0 w-[50px] h-[30px] sm:w-[100px] sm:h-[80px] rounded bg-gray-200;
+}
+
+.rightBlock {
+  @apply flex flex-col items-end gap-2 sm:gap-3 w-[30%];
+}
+
+.priceWeight {
+  @apply h-4 w-[80px] sm:w-[100px] bg-gray-200 rounded;
+}
+
+.controls {
+  @apply flex items-center gap-1 sm:gap-2;
+}
+
+.buttonCircle {
+  @apply w-[25px] h-[25px] sm:w-[34px] sm:h-[34px] rounded-full bg-gray-200;
+}
+
+.quantityBar {
+  @apply w-5 sm:w-6 h-4 bg-gray-200 rounded;
+}
+
+.mainTitle {
+  @apply mt-[25px] h-6 w-3/4 max-w-[350px] bg-gray-200 rounded mb-6;
+}
+
+.title {
+  @apply h-4 w-[40%] bg-gray-200 flex rounded;
+}
+
+.subtitleOrange {
+  @apply h-3 w-[80%] bg-gray-200 flex rounded;
+}
+
+.container {
+  @apply max-w-[1280px] mx-auto p-[10px];
+}
+
+.textBlock {
+  @apply flex flex-col gap-2 w-full;
+}

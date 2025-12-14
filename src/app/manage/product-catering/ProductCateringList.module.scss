@@ -1,0 +1,100 @@
+.container {
+  @apply max-w-[1280px] mx-auto p-[10px];
+}
+
+.wrapper {
+  @apply flex flex-col justify-center items-center pt-5;
+}
+
+.list {
+  @apply flex flex-col gap-1 pt-6 w-full;
+}
+
+.item {
+  @apply border flex flex-col justify-between items-center gap-2 p-1 w-full lg:flex-row;
+}
+
+.info_wrapper {
+  @apply grid grid-cols-2 gap-[10px] w-full lg:justify-start lg:items-center lg:flex lg:w-1/2;
+}
+
+.image {
+  @apply w-[100px] h-[80px] object-cover;
+}
+
+.image_wrapper {
+  @apply flex items-center flex-shrink-0 justify-center lg:items-start;
+}
+
+.info_title {
+  @apply flex flex-col items-center text-center justify-center gap-1 max-w-[500px]  lg:items-start lg:text-left;
+}
+
+.info {
+  @apply flex flex-col items-center text-center max-w-[500px] lg:items-end lg:text-right lg:flex-grow;
+}
+
+.details_wrapper {
+  @apply grid grid-cols-2 w-full lg:justify-end lg:flex lg:w-1/2;
+}
+
+.details {
+  @apply flex flex-col justify-center items-center border-0 px-[10px] mx-[10px] lg:border-r lg:justify-center lg:items-end;
+}
+
+.details_add_card {
+  @apply text-right;
+}
+.details_title {
+  @apply flex items-center gap-1;
+}
+
+.button {
+  @apply w-full text-sm font-light px-2 py-1 rounded-md bg-main transition hover:bg-white border border-main text-center max-w-[250px];
+}
+
+.buttons {
+  @apply flex  flex-col justify-center items-center gap-2;
+}
+
+.title {
+  @apply text-2xl text-center pb-8;
+}
+
+.form {
+  @apply flex flex-col gap-2 justify-center items-center w-full max-w-[400px];
+}
+.form_field {
+  @apply w-full text-sm font-light border border-main p-2 rounded-md;
+}
+
+.form_button {
+  @apply text-sm w-full font-light p-2 rounded-md bg-main transition hover:bg-white border border-main text-center;
+}
+
+.breadcrum_list {
+  @apply text-sm list-none flex flex-wrap gap-2 lg:text-base;
+}
+
+.breadcrum_link {
+  @apply flex-shrink-0;
+}
+
+.actions {
+  @apply flex flex-col items-center;
+}
+.select {
+  @apply w-full text-sm font-light border border-main p-2 rounded-md;
+}
+
+.filters {
+  @apply grid grid-cols-2 gap-1 sm:grid-cols-4 mt-4 sm:gap-2;
+}
+
+.add_cart_wrapper {
+  @apply w-[100%];
+}
+
+.add_cart {
+  @apply flex justify-start items-center gap-2;
+}

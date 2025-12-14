@@ -1,0 +1,27 @@
+.wrapper {
+  @apply min-h-screen grid grid-cols-1 lg:grid-cols-2;
+
+  > .left {
+    @apply h-full lg:flex flex-col items-center justify-center px-4 mx-auto;
+
+    > .heading {
+      @apply text-3xl mb-6 pt-[100px] text-center lg:pt-0 lg:text-left;
+    }
+
+    .button {
+      @apply mt-4 w-full;
+      @apply text-lg font-light px-2 py-1 rounded-md bg-main transition-all hover:bg-white border border-main text-center;
+    }
+
+    .toggle {
+      @apply mt-3 flex justify-center gap-2;
+    }
+  }
+
+  > .right {
+    @apply h-full bg-primary hidden lg:flex items-center justify-center;
+  }
+}
+.form {
+  @apply min-w-[280px];
+}

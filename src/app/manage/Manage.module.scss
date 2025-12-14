@@ -1,0 +1,35 @@
+.container {
+  @apply max-w-[1280px] mx-auto p-[10px];
+}
+
+.wrapper {
+  @apply flex flex-col justify-center items-center pt-5;
+}
+
+.button {
+  @apply text-lg font-light px-8 py-4 rounded-md bg-main transition hover:bg-white border border-main text-center;
+}
+
+.wrapper_menu {
+  @apply grid grid-cols-1 gap-4 pt-8 sm:grid-cols-2;
+}
+
+.title {
+  @apply text-2xl text-center;
+}
+
+.breadcrum_list {
+  @apply text-sm list-none flex flex-wrap gap-2 sm:text-base;
+}
+
+.breadcrum_link {
+  @apply flex-shrink-0;
+}
+
+.wrapper_logout {
+  @apply w-full flex justify-between;
+}
+
+.button_logout {
+  @apply text-sm  font-light px-[10px] py-[5px] rounded-md bg-main transition hover:bg-white border border-main text-center;
+}

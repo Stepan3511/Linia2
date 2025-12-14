@@ -1,0 +1,62 @@
+.notificationsContainer {
+  @apply fixed top-5 right-5 flex flex-col gap-4 z-10;
+}
+
+.notification {
+  @apply bg-yellow-300 text-black p-3 rounded-lg shadow-lg z-50 relative;
+  animation: pulse 2s infinite;
+  width: 300px;
+}
+
+.holidayNotification {
+  @apply bg-red-100 text-black p-3 rounded-lg shadow-lg relative;
+  animation: holidayPulse 2s infinite;
+  width: 300px;
+}
+
+.content {
+  @apply flex flex-col gap-2;
+}
+
+.message_title {
+  @apply font-semibold border-b border-black;
+}
+
+.message_content {
+  @apply pt-2 pb-2 block;
+}
+
+.closeButton {
+  @apply absolute top-2 right-2 text-black hover:text-red-500 transition;
+  cursor: pointer;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(253, 230, 138, 0.5);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(253, 230, 138, 0.7);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(253, 230, 138, 0.5);
+  }
+}
+
+@keyframes holidayPulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(255, 193, 193, 0.5);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 193, 193, 0.7);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(255, 193, 193, 0.5);
+  }
+}

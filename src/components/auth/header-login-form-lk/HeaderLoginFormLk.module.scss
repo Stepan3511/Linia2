@@ -1,0 +1,14 @@
+.login_button {
+  @apply mt-2 text-black  py-1 px-4 border bg-[#f3f3f7] border-[#f3f3f7] flex items-center  hover:shadow-md rounded-2xl transition-all duration-200 font-medium text-sm;
+}
+.login_button_icon {
+  @apply ml-1;
+}
+
+.logout_button_icon {
+  @apply ml-1;
+}
+
+.auth_buttons {
+  @apply flex gap-1;
+}

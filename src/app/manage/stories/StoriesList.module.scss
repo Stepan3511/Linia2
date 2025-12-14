@@ -1,0 +1,104 @@
+.container {
+  @apply max-w-[1280px] mx-auto p-[10px];
+}
+
+.wrapper {
+  @apply flex flex-col justify-center items-center pt-5;
+}
+
+.list {
+  @apply grid grid-cols-2 gap-2 pt-6 sm:grid-cols-3  lg:grid-cols-5;
+}
+
+.item {
+  @apply border flex flex-col justify-between items-center gap-4 p-2;
+}
+
+.info_wrapper {
+  @apply flex flex-col items-center;
+}
+
+.image {
+  @apply w-[100px] h-[80px] object-cover;
+}
+
+.image_wrapper {
+  @apply flex items-center flex-shrink-0 justify-center lg:items-start;
+}
+
+.info_title {
+  @apply flex flex-col items-center text-center justify-center gap-1 pb-2;
+}
+
+.info {
+  @apply flex flex-col items-center text-center lg:items-end lg:text-right lg:flex-grow;
+}
+
+.info_description {
+  @apply flex flex-col items-center pb-2;
+}
+.details {
+  @apply flex flex-col justify-center items-center border-0 px-[10px] mx-[10px] lg:border-r lg:justify-center lg:items-end;
+}
+
+.details_title {
+  @apply flex items-center gap-1;
+}
+
+.button {
+  @apply text-sm w-full font-light p-2 rounded-md bg-main transition hover:bg-white border border-main text-center max-w-[500px];
+}
+
+.add_button {
+  @apply mb-[30px] text-sm w-full font-light p-2 rounded-md bg-main transition hover:bg-white border border-main text-center max-w-[500px];
+}
+
+.remove_button {
+  @apply mt-[5px] text-sm w-full font-light p-2 rounded-md bg-main transition hover:bg-white border border-main text-center max-w-[500px];
+}
+
+.buttons {
+  @apply flex  flex-col justify-center items-center gap-2;
+}
+
+.title {
+  @apply text-2xl text-center pb-8;
+}
+
+.form {
+  @apply flex flex-col gap-2 justify-center items-center w-full;
+}
+.form_field {
+  @apply w-full text-sm font-light border border-main p-2 rounded-md max-w-[500px];
+}
+
+.form_button {
+  @apply mt-[30px] text-sm w-full font-light p-2 rounded-md bg-main transition hover:bg-white border border-main text-center max-w-[500px];
+}
+
+.breadcrum_list {
+  @apply text-sm list-none flex flex-wrap gap-2 lg:text-base;
+}
+
+.breadcrum_link {
+  @apply flex-shrink-0;
+}
+.main_wrapper {
+  @apply flex flex-col pt-[30px] justify-center items-center;
+}
+
+.main_wrapper_row {
+  @apply flex gap-2 flex-wrap justify-center items-center;
+}
+
+.story {
+  @apply flex flex-col max-w-[250px];
+}
+
+.image_preview {
+  @apply w-[150px] h-[150px];
+}
+
+.file_input_wrapper {
+  @apply flex flex-col justify-center items-center mt-[30px];
+}

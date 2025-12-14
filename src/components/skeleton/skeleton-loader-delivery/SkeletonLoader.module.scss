@@ -1,0 +1,46 @@
+.products {
+  @apply grid xl:grid-cols-4 xl:gap-[40px] lg:grid-cols-3 lg:gap-[30px] md:grid-cols-2 md:gap-[20px] grid-cols-2 gap-[20px];
+}
+
+.card {
+  @apply animate-pulse flex flex-col justify-between w-full h-full;
+}
+
+.image {
+  @apply h-[200px] sm:h-[260px] w-full rounded-lg bg-gray-200;
+}
+
+.textBlock {
+  @apply mt-3;
+}
+.mainTitle {
+  @apply mt-[25px] h-6 w-3/4 max-w-[350px] bg-gray-200 rounded mb-6;
+}
+
+.title {
+  @apply h-4 w-3/4 bg-gray-200 rounded mb-2;
+}
+
+.subtitle {
+  @apply h-3 w-5/6 bg-gray-200 rounded mb-1;
+}
+
+.weight {
+  @apply h-3 w-1/2 bg-gray-200 rounded;
+}
+
+.footer {
+  @apply flex justify-between items-center mt-4;
+}
+
+.price {
+  @apply h-4 w-12 bg-gray-200 rounded;
+}
+
+.button {
+  @apply h-[30px] w-20 bg-gray-200 rounded-2xl;
+}
+
+.container {
+  @apply max-w-[1280px] mx-auto p-[10px];
+}

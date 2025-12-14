@@ -1,0 +1,19 @@
+.container {
+  @apply max-w-[1280px] mx-auto px-[10px] pt-[10px];
+}
+
+.header_wrapper {
+  @apply flex flex-col items-center sm:flex-row justify-between;
+}
+
+.image_wrapper {
+  @apply flex items-center gap-4;
+}
+
+.button {
+  @apply mt-2 text-black  py-1 px-4 border bg-[#f3f3f7] border-[#f3f3f7] flex items-center  hover:shadow-md rounded-2xl transition-all duration-200 font-medium text-sm;
+}
+
+.menu_wrapper {
+  @apply flex gap-1 flex-wrap justify-center;
+}

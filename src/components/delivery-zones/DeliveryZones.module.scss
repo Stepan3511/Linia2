@@ -1,0 +1,37 @@
+.delivery_zones {
+  @apply bg-gray-50 py-[30px];
+
+  .container {
+    @apply max-w-[1280px] mx-auto px-[10px];
+  }
+
+  .title {
+    @apply block text-xl font-semibold text-gray-800 text-center mb-[30px] sm:text-2xl;
+  }
+
+  .delivery_list {
+    @apply list-disc list-inside text-gray-700 space-y-3 pb-[30px];
+
+    .zone {
+      @apply font-normal text-gray-800 text-sm sm:text-base sm:font-medium;
+    }
+    .zone_span {
+      @apply border-b-2 border-main;
+    }
+  }
+
+  .map_container {
+    @apply mt-8 overflow-hidden;
+
+    .map_wrapper {
+      @apply h-[380px] w-full inline-block overflow-hidden;
+    }
+
+    .map_frame {
+      @apply w-full h-[380px];
+      position: relative;
+      top: -67px;
+      border: none;
+    }
+  }
+}

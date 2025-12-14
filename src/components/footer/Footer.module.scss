@@ -1,0 +1,75 @@
+.footer {
+  @apply pt-[30px] pb-[30px] sm:pt-[50px];
+  background-color: rgb(24, 24, 24);
+}
+
+.container {
+  @apply max-w-[1280px] mx-auto p-[10px];
+}
+
+.contact_section {
+  @apply font-medium pb-[25px];
+}
+
+.contact_title {
+  @apply text-[14px] text-white opacity-70 sm:text-[16px];
+}
+
+.contact_link {
+  @apply text-[16px] text-white transition-all hover:text-main sm:text-[18px];
+}
+
+.social_links {
+  @apply flex items-center gap-2;
+}
+
+.social_links_wrapper {
+  @apply flex flex-col gap-4;
+}
+
+.social_icon {
+  @apply opacity-70 invert transition-all hover:opacity-100;
+}
+.app_links_wrapper {
+  @apply flex items-center gap-2 pt-2 ml-[-7px];
+}
+.app_links {
+  @apply opacity-90  transition-all hover:opacity-100;
+}
+
+.footer_bottom {
+  @apply border-t border-white/10 pt-[25px];
+}
+
+.bottom_section {
+  @apply flex flex-col justify-between gap-2 lg:flex-row lg:items-center;
+}
+
+.bottom_links {
+  @apply font-medium flex flex-col gap-2 md:flex-row md:items-center;
+}
+
+.bottom_link {
+  @apply text-[12px] leading-[1.4] block text-white opacity-70 underline transition-colors hover:text-main;
+}
+
+.footer_text {
+  @apply text-[12px] leading-[1.4] block;
+  color: rgb(92, 99, 112);
+}
+
+.footer_notice {
+  @apply pt-4;
+}
+
+.footer_privacy {
+  @apply pt-2;
+}
+
+.developer {
+  @apply pt-2;
+}
+
+.developer_link {
+  @apply text-white opacity-70 transition-all hover:opacity-100 font-bold;
+}

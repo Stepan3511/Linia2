@@ -1,0 +1,11 @@
+User-agent: *
+Disallow: *?*
+Allow: /*.css
+Allow: /*.js
+Allow: /*.jpg
+Allow: /*.png
+Allow: /*.gif
+Disallow: /manage
+Disallow: /auth
+
+Sitemap: https://liniyavkusa75.ru/sitemap.xml

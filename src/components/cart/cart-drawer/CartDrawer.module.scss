@@ -1,0 +1,114 @@
+.cart {
+  @apply text-sm font-bold px-4 border border-main py-1 flex items-center justify-center bg-white text-black rounded-full shadow-sm hover:shadow-md transition-all duration-200 relative;
+}
+
+.icon {
+  @apply w-4 h-4;
+}
+
+.total {
+  @apply ml-1;
+}
+
+.badge {
+  @apply absolute top-0 right-0 bg-red-500 text-white text-xs font-bold w-4 h-4 flex items-center justify-center rounded-full;
+  transform: translate(50%, -50%);
+}
+
+.cart_title {
+  @apply absolute top-1 left-3 text-xl font-bold;
+}
+
+.title_wrapper {
+  @apply flex gap-1 justify-between items-center;
+}
+
+.clear_cart_button {
+  @apply text-sm text-red-500  border-b-[1px] border-orange-600;
+}
+
+.action_buttons {
+  @apply flex justify-end pb-[10px] sm:pb-[20px];
+}
+
+.items_wrapper {
+  @apply overflow-y-scroll max-h-full p-2 pt-0 mt-8 min-h-[200px];
+}
+
+.items_container {
+  @apply p-4 space-y-4;
+}
+
+.item {
+  @apply flex justify-between items-center border-b pb-2;
+}
+
+.item_info {
+  @apply font-medium;
+}
+
+.item_price {
+  @apply text-sm text-gray-500;
+}
+
+.quantity_control {
+  @apply flex items-center gap-2;
+}
+
+.control_button {
+  @apply p-1 bg-gray-200 rounded-full hover:bg-gray-300 transition;
+}
+
+.quantity {
+  @apply font-bold;
+}
+
+.total_summary {
+  @apply text-lg font-bold;
+}
+
+.total_price {
+  @apply text-lg font-bold;
+}
+
+.total_wrapper {
+  @apply p-2 pt-0;
+}
+.total_content {
+  @apply flex justify-between items-center;
+}
+.min_order_message {
+  @apply text-red-500 text-sm mb-2 text-center;
+}
+
+.cart_empty {
+  @apply text-gray-500;
+}
+
+.checkout_button_enabled {
+  @apply mt-1 w-full font-normal text-sm bg-main border border-white flex items-center justify-center text-black hover:border-main hover:bg-white sm:font-medium sm:text-base transition-all duration-200 p-2 rounded-lg;
+}
+
+.checkout_button_disabled {
+  @apply mt-2 w-full bg-gray-300 text-gray-500 cursor-not-allowed p-2 rounded-lg;
+}
+
+.quantity_wrapper {
+  @apply flex flex-col items-end;
+}
+
+.delivery_list_title {
+  @apply text-sm text-[#5c6370];
+}
+
+.zone {
+  @apply text-[11px] text-[#5c6370] sm:text-[12px];
+}
+
+.add_cart_title {
+  @apply text-lg font-bold pb-2;
+}
+
+.delivery_list li {
+  @apply leading-none sm:leading-[1.2];
+}

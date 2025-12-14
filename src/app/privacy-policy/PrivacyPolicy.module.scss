@@ -1,0 +1,27 @@
+.container {
+  @apply max-w-[1280px] mx-auto p-[10px];
+}
+
+.section {
+  @apply pb-[20px] pt-[20px] sm:pt-[30px];
+}
+
+.title {
+  @apply font-bold text-xl pb-4;
+}
+
+.section_title {
+  @apply font-bold py-[10px] pb-2;
+}
+
+.paragraph {
+  @apply mb-4;
+}
+
+.footer {
+  @apply py-[10px] font-bold;
+}
+
+.breadcrum_list {
+  @apply text-sm list-none flex gap-2 sm:text-base;
+}
