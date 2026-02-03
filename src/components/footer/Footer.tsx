@@ -149,16 +149,6 @@ export const Footer: React.FC = () => {
             Индивидуальный предприниматель: Слепченко Александр Юрьевич <br />
             ОГРНИП 313753634300050, ИНН 753614189925
           </p>
-          <div className={`${styles.footer_text} ${styles.developer}`}>
-            Разработка сайта —{" "}
-            <Link
-              href="https://yi-wan.ru/"
-              target="_blank"
-              className={styles.developer_link}
-            >
-              Веб-студия «YI-WAN»
-            </Link>
-          </div>
         </div>
       </div>
       <ScrollToTop />
