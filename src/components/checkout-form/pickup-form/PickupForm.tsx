@@ -37,7 +37,7 @@ export default function PickupForm({ onValidate }: PickupFormProps) {
         return (
           <Form className={styles.form}>
             <span>
-              <b>Наш адрес:</b> г. Чита, ул. Бабушкина, 104
+              <b>Наш адрес:</b> г. Чита, Ул. Генерала Белика 14.
             </span>
 
             <label htmlFor="name" className={styles.label}>
@@ -71,18 +71,16 @@ export default function PickupForm({ onValidate }: PickupFormProps) {
             <div className={styles.toggle_group}>
               <button
                 type="button"
-                className={`${styles.toggle_button} ${
-                  values.paymentMethod === "cash" ? styles.active : ""
-                }`}
+                className={`${styles.toggle_button} ${values.paymentMethod === "cash" ? styles.active : ""
+                  }`}
                 onClick={() => setFieldValue("paymentMethod", "cash")}
               >
                 Наличные
               </button>
               <button
                 type="button"
-                className={`${styles.toggle_button} ${
-                  values.paymentMethod === "card" ? styles.active : ""
-                }`}
+                className={`${styles.toggle_button} ${values.paymentMethod === "card" ? styles.active : ""
+                  }`}
                 onClick={() => setFieldValue("paymentMethod", "card")}
               >
                 Картой
