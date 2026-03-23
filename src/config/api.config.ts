@@ -1,4 +1,4 @@
-export const SERVER_URL = process.env.SERVER_URL;
+export const SERVER_URL = process.env.INTERNAL_SERVER_URL || process.env.SERVER_URL;
 
 export const API_URL = {
   root: (url = "") => `${SERVER_URL}${url ? url : ""}`,
