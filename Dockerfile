@@ -11,7 +11,7 @@ ENV SERVER_URL=$SERVER_URL
 ENV APP_URL=$APP_URL
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-RUN yarn build
+RUN yarn build --turbopack
 
 FROM node:18-alpine AS runner
 WORKDIR /app

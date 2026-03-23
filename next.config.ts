@@ -2,9 +2,6 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: "standalone",
-  experimental: {
-    turbopack: true,
-  },
   sassOptions: {
     silenceDeprecations: ["legacy-js-api"],
   },
