@@ -6,7 +6,6 @@ import Link from "next/link";
 import { useCartStore } from "@/store/cartStore";
 import DeliveryForm from "@/components/checkout-form/delivery-form/DeliveryForm";
 import PickupForm from "@/components/checkout-form/pickup-form/PickupForm";
-import toast from "react-hot-toast";
 import { PUBLIC_URL } from "@/config/url.config";
 import { useRouter } from "next/navigation";
 import { useCreateOrder } from "@/hooks/order/useCreateOrder";
@@ -85,21 +84,14 @@ export default function Checkout() {
         );
       });
 
-      // 3. Чистим корзину, показываем тост и редиректим
-      toast.success(
-        "Заказ оформлен! Если мы не связались с Вами в течении 10 минут свяжитесь с нами по номеру телефона: +7 (924) 805-33-55",
-        { duration: 10000 }
-      );
+      // 3. Чистим корзину и редиректим
       setIsOrderPlaced(true);
       clearCart();
       setPromoCode(null);
       push(PUBLIC_URL.thanks());
     } catch (error) {
       console.error(error);
-      toast.error(
-        "Ошибка отправки вашего заказа, свяжитесь по номеру: +7 (924) 805-33-55",
-        { duration: 10000 }
-      );
+      push("/order-error");
     } finally {
       setIsSubmitting(false);
     }

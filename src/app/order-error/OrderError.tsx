@@ -1,9 +1,9 @@
 "use client";
 
-import styles from "./Thanks.module.scss";
+import styles from "./OrderError.module.scss";
 import Link from "next/link";
 
-export default function Thanks() {
+export default function OrderError() {
   return (
     <div className={styles.container}>
       <ul className={styles.breadcrum_list}>
@@ -15,17 +15,18 @@ export default function Thanks() {
         <span className={styles.breadcrum_arrow}>&gt;</span>
 
         <li>
-          <span>Спасибо за заказ</span>
+          <span>Ошибка заказа</span>
         </li>
       </ul>
       <div className={styles.wrapper}>
         <div className={styles.alert}>
-          <h1 className={styles.title}>Спасибо за ваш заказ!</h1>
-          <p className={styles.message}>Ваш заказ успешно оформлен.</p>
+          <h1 className={styles.title}>Ошибка при оформлении заказа</h1>
+          <p className={styles.message}>
+            К сожалению, не удалось оформить ваш заказ. Пожалуйста, свяжитесь с
+            нами по номеру телефона:
+          </p>
 
           <p className={styles.contact}>
-            Если мы не связались с Вами в течении 10 минут свяжитесь с нами по
-            номеру телефона: <br />
             <a href="tel:+79248053355">+7 (924) 805-33-55</a>
           </p>
           <div className={styles.buttons}>

@@ -1,0 +1,36 @@
+.container {
+  @apply max-w-[1280px] mx-auto p-[10px];
+}
+
+.breadcrum_list {
+  @apply text-sm list-none flex flex-wrap gap-2 sm:text-base;
+}
+
+.breadcrum_link {
+  @apply flex-shrink-0;
+}
+
+.wrapper {
+  @apply mt-[20px] bg-[#f9f9f9] p-[10px] rounded-lg text-center sm:p-[30px];
+}
+
+.alert {
+  @apply max-w-[600px] m-auto;
+}
+
+.title {
+  @apply text-2xl mb-[20px] sm:text-3xl;
+}
+
+.message,
+.contact {
+  @apply text-base mb-[15px] sm:text-lg;
+}
+
+.buttons {
+  @apply mt-[30px];
+}
+
+.link {
+  @apply mt-2 font-normal text-sm bg-main border border-white inline-block items-center justify-center text-black hover:border-main hover:bg-white sm:font-medium sm:text-base transition-all duration-200 p-2 rounded-lg;
+}
