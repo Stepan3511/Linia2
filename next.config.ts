@@ -10,15 +10,11 @@ const nextConfig: NextConfig = {
     APP_URL: process.env.APP_URL,
   },
   async rewrites() {
+    const baseUrl = process.env.SERVER_URL?.replace(/\/api$/, "");
     return [
       {
         source: "/uploads/:path*",
-        destination: `${process.env.SERVER_URL}/uploads/:path*`,
-      },
-      // Добавьте это:
-      {
-        source: "/api/:path*",
-        destination: `${process.env.SERVER_URL}/api/:path*`,
+        destination: `${baseUrl}/uploads/:path*`,
       },
     ];
   },
