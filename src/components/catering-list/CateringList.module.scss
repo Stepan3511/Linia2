@@ -22,8 +22,12 @@
   @apply flex items-center gap-[5px] sm:gap-4;
 }
 
+.product_image_wrapper {
+  @apply relative flex-shrink-0 w-[50px] h-[30px] sm:w-[100px] sm:h-[80px];
+}
+
 .product_image {
-  @apply flex-shrink-0 object-cover w-[50px] h-[30px] sm:w-[100px] sm:h-[80px];
+  @apply object-cover;
 }
 
 .product_name {

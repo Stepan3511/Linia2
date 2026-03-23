@@ -9,5 +9,6 @@ export const useGetStories = () => {
       const { data } = await storiesService.get();
       return data;
     },
+    staleTime: 5 * 60 * 1000,
   });
 };

@@ -1,0 +1,443 @@
+2026-Mar-23 16:55:38.299324 Starting deployment of Stepan3511/linia:main to liniya vkusa.
+2026-Mar-23 16:55:39.123152 Preparing container with helper image: ghcr.io/coollabsio/coolify-helper:1.0.12
+2026-Mar-23 16:55:39.598131 [DEBUG] [CMD]: docker stop -t 30 hw4k8k448ggow88w40c0s0w8
+2026-Mar-23 16:55:39.598131 [DEBUG] Error response from daemon: No such container: hw4k8k448ggow88w40c0s0w8
+2026-Mar-23 16:55:40.245766 [DEBUG] [CMD]: docker run -d --network coolify --name hw4k8k448ggow88w40c0s0w8  --rm -v /var/run/docker.sock:/var/run/docker.sock ghcr.io/coollabsio/coolify-helper:1.0.12
+2026-Mar-23 16:55:40.245766 [DEBUG] 890c402ec999a5f8740962ce984728b312df17f5b35539b6f74687da966ba0bf
+2026-Mar-23 16:55:43.076284 [DEBUG] [CMD]: docker exec hw4k8k448ggow88w40c0s0w8 bash -c 'GIT_SSH_COMMAND="ssh -o ConnectTimeout=30 -p 22 -o Port=22 -o LogLevel=ERROR -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" git ls-remote https://github.com/Stepan3511/linia refs/heads/main'
+2026-Mar-23 16:55:43.076284 [DEBUG] b41ed4a8d3e9261f6c7a7eeed43402e721f5bd30	refs/heads/main
+2026-Mar-23 16:55:43.095889 ----------------------------------------
+2026-Mar-23 16:55:43.107887 Importing Stepan3511/linia:main (commit sha b41ed4a8d3e9261f6c7a7eeed43402e721f5bd30) to /artifacts/hw4k8k448ggow88w40c0s0w8.
+2026-Mar-23 16:55:43.683791 [DEBUG] [CMD]: docker exec hw4k8k448ggow88w40c0s0w8 bash -c 'git clone --depth=1 --recurse-submodules --shallow-submodules -b 'main' 'https://github.com/Stepan3511/linia' '/artifacts/hw4k8k448ggow88w40c0s0w8' && cd '/artifacts/hw4k8k448ggow88w40c0s0w8' && if [ -f .gitmodules ]; then sed -i "s#git@\(.*\):#https://\1/#g" '/artifacts/hw4k8k448ggow88w40c0s0w8'/.gitmodules || true && git submodule sync && GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" git submodule update --init --recursive --depth=1; fi && cd '/artifacts/hw4k8k448ggow88w40c0s0w8' && GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" git lfs pull'
+2026-Mar-23 16:55:43.683791 [DEBUG] Cloning into '/artifacts/hw4k8k448ggow88w40c0s0w8'...
+2026-Mar-23 16:55:51.619377 [DEBUG] [CMD]: docker exec hw4k8k448ggow88w40c0s0w8 bash -c 'cd /artifacts/hw4k8k448ggow88w40c0s0w8 && git log -1 b41ed4a8d3e9261f6c7a7eeed43402e721f5bd30 --pretty=%B'
+2026-Mar-23 16:55:51.619377 [DEBUG] docker
+2026-Mar-23 16:55:53.634939 [DEBUG] [CMD]: docker exec hw4k8k448ggow88w40c0s0w8 bash -c 'cat /artifacts/hw4k8k448ggow88w40c0s0w8/Dockerfile'
+2026-Mar-23 16:55:53.634939 [DEBUG] FROM node:18-alpine AS deps
+2026-Mar-23 16:55:53.634939 [DEBUG] WORKDIR /app
+2026-Mar-23 16:55:53.634939 [DEBUG] RUN apk add --no-cache python3 make g++
+2026-Mar-23 16:55:53.634939 [DEBUG] COPY package.json yarn.lock ./
+2026-Mar-23 16:55:53.634939 [DEBUG] RUN yarn install --frozen-lockfile
+2026-Mar-23 16:55:53.634939 [DEBUG] 
+2026-Mar-23 16:55:53.634939 [DEBUG] FROM node:18-alpine AS builder
+2026-Mar-23 16:55:53.634939 [DEBUG] WORKDIR /app
+2026-Mar-23 16:55:53.634939 [DEBUG] COPY --from=deps /app/node_modules ./node_modules
+2026-Mar-23 16:55:53.634939 [DEBUG] COPY . .
+2026-Mar-23 16:55:53.634939 [DEBUG] RUN yarn build && npx prisma generate
+2026-Mar-23 16:55:53.634939 [DEBUG] 
+2026-Mar-23 16:55:53.634939 [DEBUG] FROM node:18-alpine AS runner
+2026-Mar-23 16:55:53.634939 [DEBUG] WORKDIR /app
+2026-Mar-23 16:55:53.634939 [DEBUG] ENV NODE_ENV=production
+2026-Mar-23 16:55:53.634939 [DEBUG] COPY --from=deps /app/node_modules ./node_modules
+2026-Mar-23 16:55:53.634939 [DEBUG] COPY --from=builder /app/dist ./dist
+2026-Mar-23 16:55:53.634939 [DEBUG] COPY --from=builder /app/prisma ./prisma
+2026-Mar-23 16:55:53.634939 [DEBUG] COPY package.json ./
+2026-Mar-23 16:55:53.634939 [DEBUG] EXPOSE 4200
+2026-Mar-23 16:55:53.634939 [DEBUG] CMD ["node", "dist/main"]
+2026-Mar-23 16:55:54.195973 [DEBUG] Creating build-time .env file in /artifacts (outside Docker context).
+2026-Mar-23 16:55:55.254041 [DEBUG] [CMD]: docker exec hw4k8k448ggow88w40c0s0w8 bash -c 'cat /artifacts/hw4k8k448ggow88w40c0s0w8/Dockerfile'
+2026-Mar-23 16:55:55.254041 [DEBUG] FROM node:18-alpine AS deps
+2026-Mar-23 16:55:55.254041 [DEBUG] WORKDIR /app
+2026-Mar-23 16:55:55.254041 [DEBUG] RUN apk add --no-cache python3 make g++
+2026-Mar-23 16:55:55.254041 [DEBUG] COPY package.json yarn.lock ./
+2026-Mar-23 16:55:55.254041 [DEBUG] RUN yarn install --frozen-lockfile
+2026-Mar-23 16:55:55.254041 [DEBUG] 
+2026-Mar-23 16:55:55.254041 [DEBUG] FROM node:18-alpine AS builder
+2026-Mar-23 16:55:55.254041 [DEBUG] WORKDIR /app
+2026-Mar-23 16:55:55.254041 [DEBUG] COPY --from=deps /app/node_modules ./node_modules
+2026-Mar-23 16:55:55.254041 [DEBUG] COPY . .
+2026-Mar-23 16:55:55.254041 [DEBUG] RUN yarn build && npx prisma generate
+2026-Mar-23 16:55:55.254041 [DEBUG] 
+2026-Mar-23 16:55:55.254041 [DEBUG] FROM node:18-alpine AS runner
+2026-Mar-23 16:55:55.254041 [DEBUG] WORKDIR /app
+2026-Mar-23 16:55:55.254041 [DEBUG] ENV NODE_ENV=production
+2026-Mar-23 16:55:55.254041 [DEBUG] COPY --from=deps /app/node_modules ./node_modules
+2026-Mar-23 16:55:55.254041 [DEBUG] COPY --from=builder /app/dist ./dist
+2026-Mar-23 16:55:55.254041 [DEBUG] COPY --from=builder /app/prisma ./prisma
+2026-Mar-23 16:55:55.254041 [DEBUG] COPY package.json ./
+2026-Mar-23 16:55:55.254041 [DEBUG] EXPOSE 4200
+2026-Mar-23 16:55:55.254041 [DEBUG] CMD ["node", "dist/main"]
+2026-Mar-23 16:55:55.303246 [DEBUG] Final Dockerfile:
+2026-Mar-23 16:55:56.231612 [DEBUG] [CMD]: docker exec hw4k8k448ggow88w40c0s0w8 bash -c 'cat /artifacts/hw4k8k448ggow88w40c0s0w8/Dockerfile'
+2026-Mar-23 16:55:56.231612 [DEBUG] FROM node:18-alpine AS deps
+2026-Mar-23 16:55:56.231612 [DEBUG] ARG MAIL_PORT=587
+2026-Mar-23 16:55:56.231612 [DEBUG] ARG MAIL_HOST=smtp.jino.ru
+2026-Mar-23 16:55:56.231612 [DEBUG] ARG JWT_SECRET=thytjyugf77667
+2026-Mar-23 16:55:56.231612 [DEBUG] ARG DATABASE_URL=postgres://postgres:<REDACTED>@akggc8c0ckoc80ksw04cc00o:5432/postgres
+2026-Mar-23 16:55:56.231612 [DEBUG] ARG MAIL_PASSWORD=N%gjgex68cpm
+2026-Mar-23 16:55:56.231612 [DEBUG] ARG MAIL_LOGIN=<REDACTED>
+2026-Mar-23 16:55:56.231612 [DEBUG] ARG TELEGRAM_BOT_TOKEN=7324404454:AAHzqYTqMizMVMnYIv20kUt2Poe1WsQd-o8
+2026-Mar-23 16:55:56.231612 [DEBUG] ARG TELEGRAM_CHAT_ID=-1002269675808
+2026-Mar-23 16:55:56.231612 [DEBUG] ARG COOLIFY_URL=https://api.liniyavkusa75.ru
+2026-Mar-23 16:55:56.231612 [DEBUG] ARG COOLIFY_FQDN=api.liniyavkusa75.ru
+2026-Mar-23 16:55:56.231612 [DEBUG] ARG COOLIFY_BRANCH=main
+2026-Mar-23 16:55:56.231612 [DEBUG] ARG COOLIFY_RESOURCE_UUID=f8w800csok4oo0s0ssc48kck
+2026-Mar-23 16:55:56.231612 [DEBUG] WORKDIR /app
+2026-Mar-23 16:55:56.231612 [DEBUG] RUN apk add --no-cache python3 make g++
+2026-Mar-23 16:55:56.231612 [DEBUG] COPY package.json yarn.lock ./
+2026-Mar-23 16:55:56.231612 [DEBUG] RUN yarn install --frozen-lockfile
+2026-Mar-23 16:55:56.231612 [DEBUG] 
+2026-Mar-23 16:55:56.231612 [DEBUG] FROM node:18-alpine AS builder
+2026-Mar-23 16:55:56.231612 [DEBUG] ARG MAIL_PORT=587
+2026-Mar-23 16:55:56.231612 [DEBUG] ARG MAIL_HOST=smtp.jino.ru
+2026-Mar-23 16:55:56.231612 [DEBUG] ARG JWT_SECRET=thytjyugf77667
+2026-Mar-23 16:55:56.231612 [DEBUG] ARG DATABASE_URL=postgres://postgres:<REDACTED>@akggc8c0ckoc80ksw04cc00o:5432/postgres
+2026-Mar-23 16:55:56.231612 [DEBUG] ARG MAIL_PASSWORD=N%gjgex68cpm
+2026-Mar-23 16:55:56.231612 [DEBUG] ARG MAIL_LOGIN=<REDACTED>
+2026-Mar-23 16:55:56.231612 [DEBUG] ARG TELEGRAM_BOT_TOKEN=7324404454:AAHzqYTqMizMVMnYIv20kUt2Poe1WsQd-o8
+2026-Mar-23 16:55:56.231612 [DEBUG] ARG TELEGRAM_CHAT_ID=-1002269675808
+2026-Mar-23 16:55:56.231612 [DEBUG] ARG COOLIFY_URL=https://api.liniyavkusa75.ru
+2026-Mar-23 16:55:56.231612 [DEBUG] ARG COOLIFY_FQDN=api.liniyavkusa75.ru
+2026-Mar-23 16:55:56.231612 [DEBUG] ARG COOLIFY_BRANCH=main
+2026-Mar-23 16:55:56.231612 [DEBUG] ARG COOLIFY_RESOURCE_UUID=f8w800csok4oo0s0ssc48kck
+2026-Mar-23 16:55:56.231612 [DEBUG] WORKDIR /app
+2026-Mar-23 16:55:56.231612 [DEBUG] COPY --from=deps /app/node_modules ./node_modules
+2026-Mar-23 16:55:56.231612 [DEBUG] COPY . .
+2026-Mar-23 16:55:56.231612 [DEBUG] RUN yarn build && npx prisma generate
+2026-Mar-23 16:55:56.231612 [DEBUG] 
+2026-Mar-23 16:55:56.231612 [DEBUG] FROM node:18-alpine AS runner
+2026-Mar-23 16:55:56.231612 [DEBUG] ARG MAIL_PORT=587
+2026-Mar-23 16:55:56.231612 [DEBUG] ARG MAIL_HOST=smtp.jino.ru
+2026-Mar-23 16:55:56.231612 [DEBUG] ARG JWT_SECRET=thytjyugf77667
+2026-Mar-23 16:55:56.231612 [DEBUG] ARG DATABASE_URL=postgres://postgres:<REDACTED>@akggc8c0ckoc80ksw04cc00o:5432/postgres
+2026-Mar-23 16:55:56.231612 [DEBUG] ARG MAIL_PASSWORD=N%gjgex68cpm
+2026-Mar-23 16:55:56.231612 [DEBUG] ARG MAIL_LOGIN=<REDACTED>
+2026-Mar-23 16:55:56.231612 [DEBUG] ARG TELEGRAM_BOT_TOKEN=7324404454:AAHzqYTqMizMVMnYIv20kUt2Poe1WsQd-o8
+2026-Mar-23 16:55:56.231612 [DEBUG] ARG TELEGRAM_CHAT_ID=-1002269675808
+2026-Mar-23 16:55:56.231612 [DEBUG] ARG COOLIFY_URL=https://api.liniyavkusa75.ru
+2026-Mar-23 16:55:56.231612 [DEBUG] ARG COOLIFY_FQDN=api.liniyavkusa75.ru
+2026-Mar-23 16:55:56.231612 [DEBUG] ARG COOLIFY_BRANCH=main
+2026-Mar-23 16:55:56.231612 [DEBUG] ARG COOLIFY_RESOURCE_UUID=f8w800csok4oo0s0ssc48kck
+2026-Mar-23 16:55:56.231612 [DEBUG] WORKDIR /app
+2026-Mar-23 16:55:56.231612 [DEBUG] ENV NODE_ENV=production
+2026-Mar-23 16:55:56.231612 [DEBUG] COPY --from=deps /app/node_modules ./node_modules
+2026-Mar-23 16:55:56.231612 [DEBUG] COPY --from=builder /app/dist ./dist
+2026-Mar-23 16:55:56.231612 [DEBUG] COPY --from=builder /app/prisma ./prisma
+2026-Mar-23 16:55:56.231612 [DEBUG] COPY package.json ./
+2026-Mar-23 16:55:56.231612 [DEBUG] EXPOSE 4200
+2026-Mar-23 16:55:56.231612 [DEBUG] CMD ["node", "dist/main"]
+2026-Mar-23 16:55:56.241149 ----------------------------------------
+2026-Mar-23 16:55:56.249980 Building docker image started.
+2026-Mar-23 16:55:56.258441 To check the current progress, click on Show Debug Logs.
+2026-Mar-23 16:55:57.251078 [DEBUG] [CMD]: docker exec hw4k8k448ggow88w40c0s0w8 bash -c 'cat /artifacts/build.sh'
+2026-Mar-23 16:55:57.251078 [DEBUG] cd /artifacts/hw4k8k448ggow88w40c0s0w8 && set -a && source /artifacts/build-time.env && set +a && docker build --no-cache  --add-host akggc8c0ckoc80ksw04cc00o:10.0.1.2 --network host -f /artifacts/hw4k8k448ggow88w40c0s0w8/Dockerfile --build-arg COOLIFY_URL --build-arg COOLIFY_FQDN --build-arg COOLIFY_BRANCH --build-arg COOLIFY_RESOURCE_UUID --build-arg MAIL_PORT --build-arg MAIL_HOST --build-arg JWT_SECRET --build-arg DATABASE_URL --build-arg MAIL_PASSWORD --build-arg MAIL_LOGIN --build-arg TELEGRAM_BOT_TOKEN --build-arg TELEGRAM_CHAT_ID --build-arg COOLIFY_BUILD_SECRETS_HASH=9a033d3a6844c2739e6442856266f767b716b6511808e37a57a9075ed666a0d7 --build-arg 'COOLIFY_URL' --build-arg 'COOLIFY_FQDN' --build-arg 'COOLIFY_BRANCH' --build-arg 'COOLIFY_RESOURCE_UUID' --progress plain -t f8w800csok4oo0s0ssc48kck:b41ed4a8d3e9261f6c7a7eeed43402e721f5bd30 /artifacts/hw4k8k448ggow88w40c0s0w8
+2026-Mar-23 16:55:58.235134 [DEBUG] [CMD]: docker exec hw4k8k448ggow88w40c0s0w8 bash -c 'bash /artifacts/build.sh'
+2026-Mar-23 16:55:58.235134 [DEBUG] #0 building with "default" instance using docker driver
+2026-Mar-23 16:55:58.235134 [DEBUG] 
+2026-Mar-23 16:55:58.235134 [DEBUG] #1 [internal] load build definition from Dockerfile
+2026-Mar-23 16:55:58.235134 [DEBUG] #1 transferring dockerfile: 2.23kB done
+2026-Mar-23 16:55:58.235134 [DEBUG] #1 DONE 0.0s
+2026-Mar-23 16:55:58.235134 [DEBUG] 
+2026-Mar-23 16:55:58.235134 [DEBUG] #2 [internal] load metadata for docker.io/library/node:18-alpine
+2026-Mar-23 16:55:58.845681 [DEBUG] #2 DONE 0.8s
+2026-Mar-23 16:55:59.011268 [DEBUG] #3 [internal] load .dockerignore
+2026-Mar-23 16:55:59.011268 [DEBUG] #3 transferring context: 78B done
+2026-Mar-23 16:55:59.011268 [DEBUG] #3 DONE 0.0s
+2026-Mar-23 16:55:59.011268 [DEBUG] 
+2026-Mar-23 16:55:59.011268 [DEBUG] #4 [builder 1/5] FROM docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e
+2026-Mar-23 16:55:59.011268 [DEBUG] #4 resolve docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e 0.0s done
+2026-Mar-23 16:55:59.011268 [DEBUG] #4 DONE 0.1s
+2026-Mar-23 16:55:59.011268 [DEBUG] 
+2026-Mar-23 16:55:59.011268 [DEBUG] #5 [builder 2/5] WORKDIR /app
+2026-Mar-23 16:55:59.011268 [DEBUG] #5 CACHED
+2026-Mar-23 16:55:59.011268 [DEBUG] 
+2026-Mar-23 16:55:59.011268 [DEBUG] #6 [internal] load build context
+2026-Mar-23 16:55:59.726853 [DEBUG] #6 transferring context: 45.31MB 0.8s done
+2026-Mar-23 16:55:59.884088 [DEBUG] #6 DONE 0.9s
+2026-Mar-23 16:55:59.884088 [DEBUG] 
+2026-Mar-23 16:55:59.884088 [DEBUG] #7 [deps 3/5] RUN apk add --no-cache python3 make g++
+2026-Mar-23 16:55:59.884088 [DEBUG] #7 0.279 fetch https://dl-cdn.alpinelinux.org/alpine/v3.21/main/x86_64/APKINDEX.tar.gz
+2026-Mar-23 16:56:00.228025 [DEBUG] #7 1.300 fetch https://dl-cdn.alpinelinux.org/alpine/v3.21/community/x86_64/APKINDEX.tar.gz
+2026-Mar-23 16:56:00.800404 [DEBUG] #7 1.872 (1/29) Installing libstdc++-dev (14.2.0-r4)
+2026-Mar-23 16:56:01.358791 [DEBUG] #7 2.430 (2/29) Installing jansson (2.14-r4)
+2026-Mar-23 16:56:01.488884 [DEBUG] #7 2.478 (3/29) Installing zstd-libs (1.5.6-r2)
+2026-Mar-23 16:56:01.493893 [DEBUG] #7 2.560 (4/29) Installing binutils (2.43.1-r3)
+2026-Mar-23 16:56:01.873053 [DEBUG] #7 2.945 (5/29) Installing libgomp (14.2.0-r4)
+2026-Mar-23 16:56:01.878120 [DEBUG] 
+2026-Mar-23 16:56:01.978319 [DEBUG] #7 3.005 (6/29) Installing libatomic (14.2.0-r4)
+2026-Mar-23 16:56:01.978319 [DEBUG] #7 3.050 (7/29) Installing gmp (6.3.0-r2)
+2026-Mar-23 16:56:02.178358 [DEBUG] #7 3.114 (8/29) Installing isl26 (0.26-r1)
+2026-Mar-23 16:56:02.178358 [DEBUG] #7 3.250 (9/29) Installing mpfr4 (4.2.1-r0)
+2026-Mar-23 16:56:02.306619 [DEBUG] #7 3.327 (10/29) Installing mpc1 (1.3.1-r1)
+2026-Mar-23 16:56:02.312713 [DEBUG] #7 3.378 (11/29) Installing gcc (14.2.0-r4)
+2026-Mar-23 16:56:07.760037 [DEBUG] #7 8.832 (12/29) Installing musl-dev (1.2.5-r9)
+2026-Mar-23 16:56:08.170166 [DEBUG] #7 9.242 (13/29) Installing g++ (14.2.0-r4)
+2026-Mar-23 16:56:09.946981 [DEBUG] #7 11.02 (14/29) Installing make (4.4.1-r2)
+2026-Mar-23 16:56:10.052957 [DEBUG] #7 11.08 (15/29) Installing libbz2 (1.0.8-r6)
+2026-Mar-23 16:56:10.057376 [DEBUG] #7 11.12 (16/29) Installing libexpat (2.7.5-r0)
+2026-Mar-23 16:56:10.189924 [DEBUG] #7 11.17 (17/29) Installing libffi (3.4.7-r0)
+2026-Mar-23 16:56:10.196943 [DEBUG] #7 11.21 (18/29) Installing gdbm (1.24-r0)
+2026-Mar-23 16:56:10.196943 [DEBUG] #7 11.26 (19/29) Installing xz-libs (5.6.3-r1)
+2026-Mar-23 16:56:10.297430 [DEBUG] #7 11.32 (20/29) Installing mpdecimal (4.0.0-r0)
+2026-Mar-23 16:56:10.297430 [DEBUG] #7 11.37 (21/29) Installing ncurses-terminfo-base (6.5_p20241006-r3)
+2026-Mar-23 16:56:10.402230 [DEBUG] #7 11.41 (22/29) Installing libncursesw (6.5_p20241006-r3)
+2026-Mar-23 16:56:10.402230 [DEBUG] #7 11.47 (23/29) Installing libpanelw (6.5_p20241006-r3)
+2026-Mar-23 16:56:10.627803 [DEBUG] #7 11.52 (24/29) Installing readline (8.2.13-r0)
+2026-Mar-23 16:56:10.631334 [DEBUG] #7 11.57 (25/29) Installing sqlite-libs (3.48.0-r4)
+2026-Mar-23 16:56:10.631334 [DEBUG] #7 11.70 (26/29) Installing python3 (3.12.12-r0)
+2026-Mar-23 16:56:11.519154 [DEBUG] #7 12.59 (27/29) Installing python3-pycache-pyc0 (3.12.12-r0)
+2026-Mar-23 16:56:11.525777 [DEBUG] 
+2026-Mar-23 16:56:12.003379 [DEBUG] #7 13.07 (28/29) Installing pyc (3.12.12-r0)
+2026-Mar-23 16:56:12.003379 [DEBUG] #7 13.07 (29/29) Installing python3-pyc (3.12.12-r0)
+2026-Mar-23 16:56:12.209415 [DEBUG] #7 13.08 Executing busybox-1.37.0-r12.trigger
+2026-Mar-23 16:56:12.214848 [DEBUG] #7 13.13 OK: 269 MiB in 46 packages
+2026-Mar-23 16:56:14.011859 [DEBUG] #7 DONE 15.1s
+2026-Mar-23 16:56:14.175133 [DEBUG] #8 [deps 4/5] COPY package.json yarn.lock ./
+2026-Mar-23 16:56:14.335581 [DEBUG] #8 DONE 0.3s
+2026-Mar-23 16:56:14.497420 [DEBUG] #9 [deps 5/5] RUN yarn install --frozen-lockfile
+2026-Mar-23 16:56:15.043742 [DEBUG] #9 0.690 yarn install v1.22.22
+2026-Mar-23 16:56:15.175835 [DEBUG] #9 0.829 [1/4] Resolving packages...
+2026-Mar-23 16:56:17.568902 [DEBUG] #9 3.222 [2/4] Fetching packages...
+2026-Mar-23 16:56:47.842698 [DEBUG] #9 33.49 [3/4] Linking dependencies...
+2026-Mar-23 16:56:48.007267 [DEBUG] #9 33.50 warning " > @nestjs-modules/mailer@2.0.2" has unmet peer dependency "@types/ejs@>=3.0.3".
+2026-Mar-23 16:56:48.007267 [DEBUG] #9 33.50 warning " > @nestjs-modules/mailer@2.0.2" has unmet peer dependency "@types/pug@>=2.0.6".
+2026-Mar-23 16:56:48.007267 [DEBUG] #9 33.50 warning " > @nestjs-modules/mailer@2.0.2" has unmet peer dependency "@types/mjml@>=4.7.4".
+2026-Mar-23 16:56:48.007267 [DEBUG] #9 33.50 warning " > @nestjs-modules/mailer@2.0.2" has unmet peer dependency "nodemailer@>=6.4.6".
+2026-Mar-23 16:56:48.007267 [DEBUG] #9 33.50 warning " > @nestjs-modules/mailer@2.0.2" has unmet peer dependency "ejs@>=3.1.2".
+2026-Mar-23 16:56:48.007267 [DEBUG] #9 33.50 warning " > @nestjs-modules/mailer@2.0.2" has unmet peer dependency "handlebars@>=4.7.6".
+2026-Mar-23 16:56:48.007267 [DEBUG] #9 33.50 warning " > @nestjs-modules/mailer@2.0.2" has unmet peer dependency "mjml@>=4.15.3".
+2026-Mar-23 16:56:48.007267 [DEBUG] #9 33.50 warning " > @nestjs-modules/mailer@2.0.2" has unmet peer dependency "pug@>=3.0.1".
+2026-Mar-23 16:56:48.007267 [DEBUG] #9 33.50 warning " > @nestjs-modules/mailer@2.0.2" has unmet peer dependency "liquidjs@>=10.8.2".
+2026-Mar-23 16:56:48.007267 [DEBUG] #9 33.50 warning " > @nestjs-modules/mailer@2.0.2" has unmet peer dependency "preview-email@>=3.0.19".
+2026-Mar-23 16:56:48.007267 [DEBUG] #9 33.51 warning " > ts-loader@9.5.1" has unmet peer dependency "webpack@^5.0.0".
+2026-Mar-23 16:57:53.819452 [DEBUG] #9 99.47 [4/4] Building fresh packages...
+2026-Mar-23 16:57:53.825454 [DEBUG] 
+2026-Mar-23 16:58:04.639355 [DEBUG] #9 110.3 Done in 109.61s.
+2026-Mar-23 16:58:04.645403 [DEBUG] 
+2026-Mar-23 16:58:04.937251 [DEBUG] #9 DONE 110.6s
+2026-Mar-23 16:58:41.470943 [DEBUG] #10 [builder 3/5] COPY --from=deps /app/node_modules ./node_modules
+2026-Mar-23 16:58:51.042431 [DEBUG] #10 DONE 9.6s
+2026-Mar-23 16:58:51.204862 [DEBUG] #11 [builder 4/5] COPY . .
+2026-Mar-23 16:58:52.137904 [DEBUG] #11 DONE 1.1s
+2026-Mar-23 16:58:52.303123 [DEBUG] #12 [builder 5/5] RUN yarn build && npx prisma generate
+2026-Mar-23 16:58:52.883586 [DEBUG] #12 0.731 yarn run v1.22.22
+2026-Mar-23 16:58:52.889512 [DEBUG] 
+2026-Mar-23 16:58:53.082114 [DEBUG] #12 0.779 $ nest build
+2026-Mar-23 16:58:53.088188 [DEBUG] 
+2026-Mar-23 16:59:00.712926 [DEBUG] #12 8.559 src/auth/guards/admin.guard.ts:7:10 - error TS2305: Module '"@prisma/client"' has no exported member 'User'.
+2026-Mar-23 16:59:00.712926 [DEBUG] #12 8.559
+2026-Mar-23 16:59:00.712926 [DEBUG] #12 8.559 7 import { User, UserRole } from '@prisma/client'
+2026-Mar-23 16:59:00.712926 [DEBUG] #12 8.559            ~~~~
+2026-Mar-23 16:59:00.719639 [DEBUG] #12 8.559 src/auth/guards/admin.guard.ts:7:16 - error TS2305: Module '"@prisma/client"' has no exported member 'UserRole'.
+2026-Mar-23 16:59:00.719639 [DEBUG] #12 8.559
+2026-Mar-23 16:59:00.719639 [DEBUG] #12 8.559 7 import { User, UserRole } from '@prisma/client'
+2026-Mar-23 16:59:00.719639 [DEBUG] #12 8.559                  ~~~~~~~~
+2026-Mar-23 16:59:00.719639 [DEBUG] #12 8.559 src/user/decorators/user.decorator.ts:2:10 - error TS2305: Module '"@prisma/client"' has no exported member 'User'.
+2026-Mar-23 16:59:00.719639 [DEBUG] #12 8.559
+2026-Mar-23 16:59:00.719639 [DEBUG] #12 8.559 2 import { User } from '@prisma/client'
+2026-Mar-23 16:59:00.757574 [DEBUG] #12 8.559            ~~~~
+2026-Mar-23 16:59:00.757574 [DEBUG] #12 8.559 src/user/dto/update-user.dto.ts:1:10 - error TS2305: Module '"@prisma/client"' has no exported member 'UserRole'.
+2026-Mar-23 16:59:00.757574 [DEBUG] #12 8.559
+2026-Mar-23 16:59:00.757574 [DEBUG] #12 8.559 1 import { UserRole } from '@prisma/client'
+2026-Mar-23 16:59:00.757574 [DEBUG] #12 8.559            ~~~~~~~~
+2026-Mar-23 16:59:00.757574 [DEBUG] #12 8.559 src/user/return-user.object.ts:3:39 - error TS2694: Namespace '"/app/node_modules/.prisma/client/default".Prisma' has no exported member 'UserSelect'.
+2026-Mar-23 16:59:00.757574 [DEBUG] #12 8.559
+2026-Mar-23 16:59:00.757574 [DEBUG] #12 8.559 3 export const returnUserObject: Prisma.UserSelect = {
+2026-Mar-23 16:59:00.757574 [DEBUG] #12 8.559                                         ~~~~~~~~~~
+2026-Mar-23 16:59:00.757574 [DEBUG] #12 8.559
+2026-Mar-23 16:59:00.918137 [DEBUG] #12 8.561 Found 5 error(s).
+2026-Mar-23 16:59:00.925700 [DEBUG] #12 8.561
+2026-Mar-23 16:59:00.925700 [DEBUG] #12 8.614 error Command failed with exit code 1.
+2026-Mar-23 16:59:00.925700 [DEBUG] #12 8.615 info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+2026-Mar-23 16:59:00.958370 [DEBUG] #12 ERROR: process "/bin/sh -c yarn build && npx prisma generate" did not complete successfully: exit code: 1
+2026-Mar-23 16:59:01.151097 [DEBUG] ------
+2026-Mar-23 16:59:01.151097 [DEBUG] > [builder 5/5] RUN yarn build && npx prisma generate:
+2026-Mar-23 16:59:01.157074 [DEBUG] 8.559            ~~~~~~~~
+2026-Mar-23 16:59:01.157074 [DEBUG] 8.559 src/user/return-user.object.ts:3:39 - error TS2694: Namespace '"/app/node_modules/.prisma/client/default".Prisma' has no exported member 'UserSelect'.
+2026-Mar-23 16:59:01.157074 [DEBUG] 8.559
+2026-Mar-23 16:59:01.157074 [DEBUG] 8.559 3 export const returnUserObject: Prisma.UserSelect = {
+2026-Mar-23 16:59:01.157074 [DEBUG] 8.559                                         ~~~~~~~~~~
+2026-Mar-23 16:59:01.157074 [DEBUG] 8.559
+2026-Mar-23 16:59:01.157074 [DEBUG] 8.561 Found 5 error(s).
+2026-Mar-23 16:59:01.157074 [DEBUG] 8.561
+2026-Mar-23 16:59:01.157074 [DEBUG] 8.614 error Command failed with exit code 1.
+2026-Mar-23 16:59:01.157074 [DEBUG] 8.615 info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+2026-Mar-23 16:59:01.157074 [DEBUG] ------
+2026-Mar-23 16:59:01.163244 [DEBUG] 9 warnings found (use docker --debug to expand):
+2026-Mar-23 16:59:01.163244 [DEBUG] - SecretsUsedInArgOrEnv: Do not use ARG or ENV instructions for sensitive data (ARG "JWT_SECRET") (line 4)
+2026-Mar-23 16:59:01.163244 [DEBUG] - SecretsUsedInArgOrEnv: Do not use ARG or ENV instructions for sensitive data (ARG "TELEGRAM_BOT_TOKEN") (line 8)
+2026-Mar-23 16:59:01.163244 [DEBUG] - SecretsUsedInArgOrEnv: Do not use ARG or ENV instructions for sensitive data (ARG "JWT_SECRET") (line 22)
+2026-Mar-23 16:59:01.163244 [DEBUG] - SecretsUsedInArgOrEnv: Do not use ARG or ENV instructions for sensitive data (ARG "TELEGRAM_BOT_TOKEN") (line 26)
+2026-Mar-23 16:59:01.163244 [DEBUG] - SecretsUsedInArgOrEnv: Do not use ARG or ENV instructions for sensitive data (ARG "JWT_SECRET") (line 40)
+2026-Mar-23 16:59:01.163244 [DEBUG] - SecretsUsedInArgOrEnv: Do not use ARG or ENV instructions for sensitive data (ARG "MAIL_PASSWORD") (line 42)
+2026-Mar-23 16:59:01.163244 [DEBUG] - SecretsUsedInArgOrEnv: Do not use ARG or ENV instructions for sensitive data (ARG "MAIL_PASSWORD") (line 6)
+2026-Mar-23 16:59:01.163244 [DEBUG] - SecretsUsedInArgOrEnv: Do not use ARG or ENV instructions for sensitive data (ARG "MAIL_PASSWORD") (line 24)
+2026-Mar-23 16:59:01.163244 [DEBUG] - SecretsUsedInArgOrEnv: Do not use ARG or ENV instructions for sensitive data (ARG "TELEGRAM_BOT_TOKEN") (line 44)
+2026-Mar-23 16:59:01.168718 [DEBUG] Dockerfile:35
+2026-Mar-23 16:59:01.168718 [DEBUG] --------------------
+2026-Mar-23 16:59:01.168718 [DEBUG] 33 |     COPY --from=deps /app/node_modules ./node_modules
+2026-Mar-23 16:59:01.168718 [DEBUG] 34 |     COPY . .
+2026-Mar-23 16:59:01.168718 [DEBUG] 35 | >>> RUN yarn build && npx prisma generate
+2026-Mar-23 16:59:01.168718 [DEBUG] 36 |
+2026-Mar-23 16:59:01.168718 [DEBUG] 37 |     FROM node:18-alpine AS runner
+2026-Mar-23 16:59:01.196631 [DEBUG] --------------------
+2026-Mar-23 16:59:01.196631 [DEBUG] ERROR: failed to build: failed to solve: process "/bin/sh -c yarn build && npx prisma generate" did not complete successfully: exit code: 1
+2026-Mar-23 16:59:01.196631 [DEBUG] exit status 1
+2026-Mar-23 16:59:01.290867 ========================================
+2026-Mar-23 16:59:01.306856 Deployment failed: Command execution failed (exit code 1): docker exec hw4k8k448ggow88w40c0s0w8 bash -c 'bash /artifacts/build.sh'
+2026-Mar-23 16:59:01.306856 Error: #0 building with "default" instance using docker driver
+2026-Mar-23 16:59:01.306856 
+2026-Mar-23 16:59:01.306856 #1 [internal] load build definition from Dockerfile
+2026-Mar-23 16:59:01.306856 #1 transferring dockerfile: 2.23kB done
+2026-Mar-23 16:59:01.306856 #1 DONE 0.0s
+2026-Mar-23 16:59:01.306856 
+2026-Mar-23 16:59:01.306856 #2 [internal] load metadata for docker.io/library/node:18-alpine
+2026-Mar-23 16:59:01.306856 #2 DONE 0.8s
+2026-Mar-23 16:59:01.306856 
+2026-Mar-23 16:59:01.306856 #3 [internal] load .dockerignore
+2026-Mar-23 16:59:01.306856 #3 transferring context: 78B done
+2026-Mar-23 16:59:01.306856 #3 DONE 0.0s
+2026-Mar-23 16:59:01.306856 
+2026-Mar-23 16:59:01.306856 #4 [builder 1/5] FROM docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e
+2026-Mar-23 16:59:01.306856 #4 resolve docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e 0.0s done
+2026-Mar-23 16:59:01.306856 #4 DONE 0.1s
+2026-Mar-23 16:59:01.306856 
+2026-Mar-23 16:59:01.306856 #5 [builder 2/5] WORKDIR /app
+2026-Mar-23 16:59:01.306856 #5 CACHED
+2026-Mar-23 16:59:01.306856 
+2026-Mar-23 16:59:01.306856 #6 [internal] load build context
+2026-Mar-23 16:59:01.306856 #6 transferring context: 45.31MB 0.8s done
+2026-Mar-23 16:59:01.306856 #6 DONE 0.9s
+2026-Mar-23 16:59:01.306856 
+2026-Mar-23 16:59:01.306856 #7 [deps 3/5] RUN apk add --no-cache python3 make g++
+2026-Mar-23 16:59:01.306856 #7 0.279 fetch https://dl-cdn.alpinelinux.org/alpine/v3.21/main/x86_64/APKINDEX.tar.gz
+2026-Mar-23 16:59:01.306856 #7 1.300 fetch https://dl-cdn.alpinelinux.org/alpine/v3.21/community/x86_64/APKINDEX.tar.gz
+2026-Mar-23 16:59:01.306856 #7 1.872 (1/29) Installing libstdc++-dev (14.2.0-r4)
+2026-Mar-23 16:59:01.306856 #7 2.430 (2/29) Installing jansson (2.14-r4)
+2026-Mar-23 16:59:01.306856 #7 2.478 (3/29) Installing zstd-libs (1.5.6-r2)
+2026-Mar-23 16:59:01.306856 #7 2.560 (4/29) Installing binutils (2.43.1-r3)
+2026-Mar-23 16:59:01.306856 #7 2.945 (5/29) Installing libgomp (14.2.0-r4)
+2026-Mar-23 16:59:01.306856 #7 3.005 (6/29) Installing libatomic (14.2.0-r4)
+2026-Mar-23 16:59:01.306856 #7 3.050 (7/29) Installing gmp (6.3.0-r2)
+2026-Mar-23 16:59:01.306856 #7 3.114 (8/29) Installing isl26 (0.26-r1)
+2026-Mar-23 16:59:01.306856 #7 3.250 (9/29) Installing mpfr4 (4.2.1-r0)
+2026-Mar-23 16:59:01.306856 #7 3.327 (10/29) Installing mpc1 (1.3.1-r1)
+2026-Mar-23 16:59:01.306856 #7 3.378 (11/29) Installing gcc (14.2.0-r4)
+2026-Mar-23 16:59:01.306856 #7 8.832 (12/29) Installing musl-dev (1.2.5-r9)
+2026-Mar-23 16:59:01.306856 #7 9.242 (13/29) Installing g++ (14.2.0-r4)
+2026-Mar-23 16:59:01.306856 #7 11.02 (14/29) Installing make (4.4.1-r2)
+2026-Mar-23 16:59:01.306856 #7 11.08 (15/29) Installing libbz2 (1.0.8-r6)
+2026-Mar-23 16:59:01.306856 #7 11.12 (16/29) Installing libexpat (2.7.5-r0)
+2026-Mar-23 16:59:01.306856 #7 11.17 (17/29) Installing libffi (3.4.7-r0)
+2026-Mar-23 16:59:01.306856 #7 11.21 (18/29) Installing gdbm (1.24-r0)
+2026-Mar-23 16:59:01.306856 #7 11.26 (19/29) Installing xz-libs (5.6.3-r1)
+2026-Mar-23 16:59:01.306856 #7 11.32 (20/29) Installing mpdecimal (4.0.0-r0)
+2026-Mar-23 16:59:01.306856 #7 11.37 (21/29) Installing ncurses-terminfo-base (6.5_p20241006-r3)
+2026-Mar-23 16:59:01.306856 #7 11.41 (22/29) Installing libncursesw (6.5_p20241006-r3)
+2026-Mar-23 16:59:01.306856 #7 11.47 (23/29) Installing libpanelw (6.5_p20241006-r3)
+2026-Mar-23 16:59:01.306856 #7 11.52 (24/29) Installing readline (8.2.13-r0)
+2026-Mar-23 16:59:01.306856 #7 11.57 (25/29) Installing sqlite-libs (3.48.0-r4)
+2026-Mar-23 16:59:01.306856 #7 11.70 (26/29) Installing python3 (3.12.12-r0)
+2026-Mar-23 16:59:01.306856 #7 12.59 (27/29) Installing python3-pycache-pyc0 (3.12.12-r0)
+2026-Mar-23 16:59:01.306856 #7 13.07 (28/29) Installing pyc (3.12.12-r0)
+2026-Mar-23 16:59:01.306856 #7 13.07 (29/29) Installing python3-pyc (3.12.12-r0)
+2026-Mar-23 16:59:01.306856 #7 13.08 Executing busybox-1.37.0-r12.trigger
+2026-Mar-23 16:59:01.306856 #7 13.13 OK: 269 MiB in 46 packages
+2026-Mar-23 16:59:01.306856 #7 DONE 15.1s
+2026-Mar-23 16:59:01.306856 
+2026-Mar-23 16:59:01.306856 #8 [deps 4/5] COPY package.json yarn.lock ./
+2026-Mar-23 16:59:01.306856 #8 DONE 0.3s
+2026-Mar-23 16:59:01.306856 
+2026-Mar-23 16:59:01.306856 #9 [deps 5/5] RUN yarn install --frozen-lockfile
+2026-Mar-23 16:59:01.306856 #9 0.690 yarn install v1.22.22
+2026-Mar-23 16:59:01.306856 #9 0.829 [1/4] Resolving packages...
+2026-Mar-23 16:59:01.306856 #9 3.222 [2/4] Fetching packages...
+2026-Mar-23 16:59:01.306856 #9 33.49 [3/4] Linking dependencies...
+2026-Mar-23 16:59:01.306856 #9 33.50 warning " > @nestjs-modules/mailer@2.0.2" has unmet peer dependency "@types/ejs@>=3.0.3".
+2026-Mar-23 16:59:01.306856 #9 33.50 warning " > @nestjs-modules/mailer@2.0.2" has unmet peer dependency "@types/pug@>=2.0.6".
+2026-Mar-23 16:59:01.306856 #9 33.50 warning " > @nestjs-modules/mailer@2.0.2" has unmet peer dependency "@types/mjml@>=4.7.4".
+2026-Mar-23 16:59:01.306856 #9 33.50 warning " > @nestjs-modules/mailer@2.0.2" has unmet peer dependency "nodemailer@>=6.4.6".
+2026-Mar-23 16:59:01.306856 #9 33.50 warning " > @nestjs-modules/mailer@2.0.2" has unmet peer dependency "ejs@>=3.1.2".
+2026-Mar-23 16:59:01.306856 #9 33.50 warning " > @nestjs-modules/mailer@2.0.2" has unmet peer dependency "handlebars@>=4.7.6".
+2026-Mar-23 16:59:01.306856 #9 33.50 warning " > @nestjs-modules/mailer@2.0.2" has unmet peer dependency "mjml@>=4.15.3".
+2026-Mar-23 16:59:01.306856 #9 33.50 warning " > @nestjs-modules/mailer@2.0.2" has unmet peer dependency "pug@>=3.0.1".
+2026-Mar-23 16:59:01.306856 #9 33.50 warning " > @nestjs-modules/mailer@2.0.2" has unmet peer dependency "liquidjs@>=10.8.2".
+2026-Mar-23 16:59:01.306856 #9 33.50 warning " > @nestjs-modules/mailer@2.0.2" has unmet peer dependency "preview-email@>=3.0.19".
+2026-Mar-23 16:59:01.306856 #9 33.51 warning " > ts-loader@9.5.1" has unmet peer dependency "webpack@^5.0.0".
+2026-Mar-23 16:59:01.306856 #9 99.47 [4/4] Building fresh packages...
+2026-Mar-23 16:59:01.306856 #9 110.3 Done in 109.61s.
+2026-Mar-23 16:59:01.306856 #9 DONE 110.6s
+2026-Mar-23 16:59:01.306856 
+2026-Mar-23 16:59:01.306856 #10 [builder 3/5] COPY --from=deps /app/node_modules ./node_modules
+2026-Mar-23 16:59:01.306856 #10 DONE 9.6s
+2026-Mar-23 16:59:01.306856 
+2026-Mar-23 16:59:01.306856 #11 [builder 4/5] COPY . .
+2026-Mar-23 16:59:01.306856 #11 DONE 1.1s
+2026-Mar-23 16:59:01.306856 
+2026-Mar-23 16:59:01.306856 #12 [builder 5/5] RUN yarn build && npx prisma generate
+2026-Mar-23 16:59:01.306856 #12 0.731 yarn run v1.22.22
+2026-Mar-23 16:59:01.306856 #12 0.779 $ nest build
+2026-Mar-23 16:59:01.306856 #12 8.559 src/auth/guards/admin.guard.ts:7:10 - error TS2305: Module '"@prisma/client"' has no exported member 'User'.
+2026-Mar-23 16:59:01.306856 #12 8.559
+2026-Mar-23 16:59:01.306856 #12 8.559 7 import { User, UserRole } from '@prisma/client'
+2026-Mar-23 16:59:01.306856 #12 8.559            ~~~~
+2026-Mar-23 16:59:01.306856 #12 8.559 src/auth/guards/admin.guard.ts:7:16 - error TS2305: Module '"@prisma/client"' has no exported member 'UserRole'.
+2026-Mar-23 16:59:01.306856 #12 8.559
+2026-Mar-23 16:59:01.306856 #12 8.559 7 import { User, UserRole } from '@prisma/client'
+2026-Mar-23 16:59:01.306856 #12 8.559                  ~~~~~~~~
+2026-Mar-23 16:59:01.306856 #12 8.559 src/user/decorators/user.decorator.ts:2:10 - error TS2305: Module '"@prisma/client"' has no exported member 'User'.
+2026-Mar-23 16:59:01.306856 #12 8.559
+2026-Mar-23 16:59:01.306856 #12 8.559 2 import { User } from '@prisma/client'
+2026-Mar-23 16:59:01.306856 #12 8.559            ~~~~
+2026-Mar-23 16:59:01.306856 #12 8.559 src/user/dto/update-user.dto.ts:1:10 - error TS2305: Module '"@prisma/client"' has no exported member 'UserRole'.
+2026-Mar-23 16:59:01.306856 #12 8.559
+2026-Mar-23 16:59:01.306856 #12 8.559 1 import { UserRole } from '@prisma/client'
+2026-Mar-23 16:59:01.306856 #12 8.559            ~~~~~~~~
+2026-Mar-23 16:59:01.306856 #12 8.559 src/user/return-user.object.ts:3:39 - error TS2694: Namespace '"/app/node_modules/.prisma/client/default".Prisma' has no exported member 'UserSelect'.
+2026-Mar-23 16:59:01.306856 #12 8.559
+2026-Mar-23 16:59:01.306856 #12 8.559 3 export const returnUserObject: Prisma.UserSelect = {
+2026-Mar-23 16:59:01.306856 #12 8.559                                         ~~~~~~~~~~
+2026-Mar-23 16:59:01.306856 #12 8.559
+2026-Mar-23 16:59:01.306856 #12 8.561 Found 5 error(s).
+2026-Mar-23 16:59:01.306856 #12 8.561
+2026-Mar-23 16:59:01.306856 #12 8.614 error Command failed with exit code 1.
+2026-Mar-23 16:59:01.306856 #12 8.615 info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+2026-Mar-23 16:59:01.306856 #12 ERROR: process "/bin/sh -c yarn build && npx prisma generate" did not complete successfully: exit code: 1
+2026-Mar-23 16:59:01.306856 ------
+2026-Mar-23 16:59:01.306856 > [builder 5/5] RUN yarn build && npx prisma generate:
+2026-Mar-23 16:59:01.306856 8.559            ~~~~~~~~
+2026-Mar-23 16:59:01.306856 8.559 src/user/return-user.object.ts:3:39 - error TS2694: Namespace '"/app/node_modules/.prisma/client/default".Prisma' has no exported member 'UserSelect'.
+2026-Mar-23 16:59:01.306856 8.559
+2026-Mar-23 16:59:01.306856 8.559 3 export const returnUserObject: Prisma.UserSelect = {
+2026-Mar-23 16:59:01.306856 8.559                                         ~~~~~~~~~~
+2026-Mar-23 16:59:01.306856 8.559
+2026-Mar-23 16:59:01.306856 8.561 Found 5 error(s).
+2026-Mar-23 16:59:01.306856 8.561
+2026-Mar-23 16:59:01.306856 8.614 error Command failed with exit code 1.
+2026-Mar-23 16:59:01.306856 8.615 info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+2026-Mar-23 16:59:01.306856 ------
+2026-Mar-23 16:59:01.306856 
+2026-Mar-23 16:59:01.306856 9 warnings found (use docker --debug to expand):
+2026-Mar-23 16:59:01.306856 - SecretsUsedInArgOrEnv: Do not use ARG or ENV instructions for sensitive data (ARG "JWT_SECRET") (line 4)
+2026-Mar-23 16:59:01.306856 - SecretsUsedInArgOrEnv: Do not use ARG or ENV instructions for sensitive data (ARG "TELEGRAM_BOT_TOKEN") (line 8)
+2026-Mar-23 16:59:01.306856 - SecretsUsedInArgOrEnv: Do not use ARG or ENV instructions for sensitive data (ARG "JWT_SECRET") (line 22)
+2026-Mar-23 16:59:01.306856 - SecretsUsedInArgOrEnv: Do not use ARG or ENV instructions for sensitive data (ARG "TELEGRAM_BOT_TOKEN") (line 26)
+2026-Mar-23 16:59:01.306856 - SecretsUsedInArgOrEnv: Do not use ARG or ENV instructions for sensitive data (ARG "JWT_SECRET") (line 40)
+2026-Mar-23 16:59:01.306856 - SecretsUsedInArgOrEnv: Do not use ARG or ENV instructions for sensitive data (ARG "MAIL_PASSWORD") (line 42)
+2026-Mar-23 16:59:01.306856 - SecretsUsedInArgOrEnv: Do not use ARG or ENV instructions for sensitive data (ARG "MAIL_PASSWORD") (line 6)
+2026-Mar-23 16:59:01.306856 - SecretsUsedInArgOrEnv: Do not use ARG or ENV instructions for sensitive data (ARG "MAIL_PASSWORD") (line 24)
+2026-Mar-23 16:59:01.306856 - SecretsUsedInArgOrEnv: Do not use ARG or ENV instructions for sensitive data (ARG "TELEGRAM_BOT_TOKEN") (line 44)
+2026-Mar-23 16:59:01.306856 Dockerfile:35
+2026-Mar-23 16:59:01.306856 --------------------
+2026-Mar-23 16:59:01.306856 33 |     COPY --from=deps /app/node_modules ./node_modules
+2026-Mar-23 16:59:01.306856 34 |     COPY . .
+2026-Mar-23 16:59:01.306856 35 | >>> RUN yarn build && npx prisma generate
+2026-Mar-23 16:59:01.306856 36 |
+2026-Mar-23 16:59:01.306856 37 |     FROM node:18-alpine AS runner
+2026-Mar-23 16:59:01.306856 --------------------
+2026-Mar-23 16:59:01.306856 ERROR: failed to build: failed to solve: process "/bin/sh -c yarn build && npx prisma generate" did not complete successfully: exit code: 1
+2026-Mar-23 16:59:01.306856 exit status 1
+2026-Mar-23 16:59:01.322642 [DEBUG] Error type: RuntimeException
+2026-Mar-23 16:59:01.335959 [DEBUG] Error code: 0
+2026-Mar-23 16:59:01.349084 [DEBUG] Location: /var/www/html/app/Traits/ExecuteRemoteCommand.php:243
+2026-Mar-23 16:59:01.363248 [DEBUG] Stack trace (first 5 lines):
+2026-Mar-23 16:59:01.376594 [DEBUG] #0 /var/www/html/app/Traits/ExecuteRemoteCommand.php(104): App\Jobs\ApplicationDeploymentJob->executeCommandWithProcess()
+2026-Mar-23 16:59:01.390065 [DEBUG] #1 /var/www/html/vendor/laravel/framework/src/Illuminate/Collections/Traits/EnumeratesValues.php(272): App\Jobs\ApplicationDeploymentJob->{closure:App\Traits\ExecuteRemoteCommand::execute_remote_command():71}()
+2026-Mar-23 16:59:01.400898 [DEBUG] #2 /var/www/html/app/Traits/ExecuteRemoteCommand.php(71): Illuminate\Support\Collection->each()
+2026-Mar-23 16:59:01.411730 [DEBUG] #3 /var/www/html/app/Jobs/ApplicationDeploymentJob.php(3163): App\Jobs\ApplicationDeploymentJob->execute_remote_command()
+2026-Mar-23 16:59:01.423281 [DEBUG] #4 /var/www/html/app/Jobs/ApplicationDeploymentJob.php(854): App\Jobs\ApplicationDeploymentJob->build_image()
+2026-Mar-23 16:59:01.433760 ========================================
+2026-Mar-23 16:59:01.444521 Deployment failed. Removing the new version of your application.
+2026-Mar-23 16:59:03.285029 Gracefully shutting down build container: hw4k8k448ggow88w40c0s0w8
+2026-Mar-23 16:59:04.365028 [DEBUG] [CMD]: docker stop -t 30 hw4k8k448ggow88w40c0s0w8
+2026-Mar-23 16:59:04.365028 [DEBUG] hw4k8k448ggow88w40c0s0w8

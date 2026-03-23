@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import { ICategory } from "@/types/category.types";
 import { IProductDelivery } from "@/types/product-delivery.types";
 import { Plus, Minus } from "lucide-react";
@@ -74,12 +75,12 @@ export default function DeliveryList({
                     <div>
                       <div className={styles.product_img_rounded}>
                         <div className={styles.product_img_wrapper}>
-                          <img
-                            src={
-                              product.image || "/uploads/catering/default.png"
-                            }
+                          <Image
+                            src={product.image || "/uploads/catering/default.png"}
                             alt={product.name || "Продукт"}
+                            fill
                             className={styles.product_image}
+                            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                           />
                         </div>
                       </div>

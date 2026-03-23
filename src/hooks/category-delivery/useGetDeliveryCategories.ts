@@ -10,5 +10,6 @@ export const useGetDeliveryCategories = () => {
       const { data } = await categoryDeliveryService.get();
       return data;
     },
+    staleTime: 5 * 60 * 1000,
   });
 };

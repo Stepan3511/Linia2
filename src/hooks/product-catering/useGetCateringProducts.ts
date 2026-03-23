@@ -10,5 +10,6 @@ export const useGetCateringProducts = () => {
       const { data } = await productCateringService.get();
       return data;
     },
+    staleTime: 5 * 60 * 1000,
   });
 };

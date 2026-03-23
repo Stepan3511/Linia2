@@ -10,5 +10,6 @@ export const useGetDeliveryProducts = () => {
       const { data } = await productDeliveryService.get();
       return data;
     },
+    staleTime: 5 * 60 * 1000,
   });
 };

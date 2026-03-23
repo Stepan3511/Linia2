@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { ICategory } from "@/types/category.types";
 import { IProductCatering } from "@/types/product-catering.types";
 import { Plus, Minus } from "lucide-react";
@@ -90,11 +91,15 @@ export default function CateringList({
                 return (
                   <div key={product.id} className={styles.product_card}>
                     <div className={styles.product_card_wrapper}>
-                      <img
-                        src={product.image || "/uploads/catering/default.png"}
-                        alt={product.name || "Продукт"}
-                        className={styles.product_image}
-                      />
+                      <div className={styles.product_image_wrapper}>
+                        <Image
+                          src={product.image || "/uploads/catering/default.png"}
+                          alt={product.name || "Продукт"}
+                          fill
+                          className={styles.product_image}
+                          sizes="100px"
+                        />
+                      </div>
                       <div>
                         <span className={styles.product_name}>
                           {product.name}

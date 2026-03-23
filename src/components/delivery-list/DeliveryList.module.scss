@@ -23,7 +23,7 @@
 }
 
 .product_img_wrapper {
-  @apply flex justify-center rounded-lg h-[200px] overflow-hidden sm:h-[260px];
+  @apply relative flex justify-center rounded-lg h-[200px] overflow-hidden sm:h-[260px];
 }
 
 .product_image {
