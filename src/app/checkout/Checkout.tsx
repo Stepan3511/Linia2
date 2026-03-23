@@ -6,7 +6,6 @@ import Link from "next/link";
 import { useCartStore } from "@/store/cartStore";
 import DeliveryForm from "@/components/checkout-form/delivery-form/DeliveryForm";
 import PickupForm from "@/components/checkout-form/pickup-form/PickupForm";
-import { sendTelegramMessage } from "@/lib/telegram";
 import toast from "react-hot-toast";
 import { PUBLIC_URL } from "@/config/url.config";
 import { useRouter } from "next/navigation";
@@ -72,6 +71,12 @@ export default function Checkout() {
             items: orderItems,
             totalAmount: orderTotal,
             promoCodeId: promoCode?.id || undefined,
+            name: formData.name,
+            phone: formData.phone,
+            address: formData.address,
+            deliveryOption: formData.deliveryOption,
+            isDelivery,
+            paymentMethod,
           },
           {
             onSuccess: resolve,
@@ -80,45 +85,21 @@ export default function Checkout() {
         );
       });
 
-      // 3. После успешного создания отправляем в Telegram
-      const cartDetails = cart
-        .map((item) => `${item.name} — ${item.quantity} шт.`)
-        .join("\n");
-
-      const paymentMethodText =
-        paymentMethod === "cash"
-          ? "Наличные"
-          : paymentMethod === "card"
-          ? "Картой"
-          : "Не выбрано";
-
-      const promoText = promoCode
-        ? `\nПромокод 🎁: ${promoCode.name}\nПодарок: ${promoCode.products
-            .map((p) => p.name)
-            .join(", ")}`
-        : "";
-
-      const message = `Новый заказ:\n\nТовары:\n${cartDetails}\nИмя: ${
-        formData.name
-      }\nТелефон: ${formData.phone}\n${
-        isDelivery
-          ? `Адрес: ${formData.address}\nДата и время: ${
-              formData.deliveryOption || "Сразу как будет готово"
-            }`
-          : "Самовывоз"
-      }\nВариант оплаты: ${paymentMethodText}${promoText}\n\nОбщая сумма: ${totalAmount} ₽`;
-
-      await sendTelegramMessage(message);
-
-      // 4. Чистим корзину, показываем тост и редиректим
-      toast.success("Заказ успешно оформлен!");
+      // 3. Чистим корзину, показываем тост и редиректим
+      toast.success(
+        "Заказ оформлен! Если мы не связались с Вами в течении 10 минут свяжитесь с нами по номеру телефона: +7 (924) 805-33-55",
+        { duration: 10000 }
+      );
       setIsOrderPlaced(true);
       clearCart();
       setPromoCode(null);
       push(PUBLIC_URL.thanks());
     } catch (error) {
       console.error(error);
-      toast.error("Ошибка при оформлении заказа");
+      toast.error(
+        "Ошибка отправки вашего заказа, свяжитесь по номеру: +7 (924) 805-33-55",
+        { duration: 10000 }
+      );
     } finally {
       setIsSubmitting(false);
     }

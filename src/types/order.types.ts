@@ -10,6 +10,12 @@ export interface ICreateOrderInput {
   promoCodeId?: string;
   items: ICreateOrderItem[];
   totalAmount: number;
+  name?: string;
+  phone?: string;
+  address?: string;
+  deliveryOption?: string;
+  isDelivery?: boolean;
+  paymentMethod?: string;
 }
 
 export interface IOrderItem {

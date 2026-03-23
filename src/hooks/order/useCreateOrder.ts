@@ -7,9 +7,6 @@ export const useCreateOrder = () => {
   const { mutate: createOrder, isPending: isLoadingCreate } = useMutation({
     mutationKey: ["create order"],
     mutationFn: (data: ICreateOrderInput) => orderService.create(data),
-    onSuccess: () => {
-      toast.success("Заказ успешно оформлен!");
-    },
     onError: (error: any) => {
       toast.error(
         error.response?.data?.message || "Ошибка при оформлении заказа"
