@@ -37,7 +37,7 @@ export default function PickupForm({ onValidate }: PickupFormProps) {
         return (
           <Form className={styles.form}>
             <span>
-              <b>Наш адрес:</b> г. Чита, Ул. Генерала Белика 14.
+              <b>Наш адрес:</b> г. Чита, Ул. Смоленская 60.
             </span>
 
             <label htmlFor="name" className={styles.label}>

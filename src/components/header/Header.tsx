@@ -25,7 +25,7 @@ export default function Header() {
               <div className={styles.worktime_wrapper}>
                 <span>Прием заказов: с 9:00 до 21:00</span>
                 <div className={styles.adress_wrapper}>
-                  <span>г. Чита, Ул. Генерала Белика 14.</span>
+                  <span>г. Чита, Ул. Смоленская 60.</span>
                   <span>
                     Тел:{" "}
                     <Link
